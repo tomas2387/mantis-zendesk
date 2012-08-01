@@ -2,127 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<style>
-		body {
-			background-color: lightgray;
-		}
-
-		#content {
-			padding-top: 50px;
-		}
-
-		.version {
-			color: gray; font-family: Helvetica; font-size: 9px;
-		}
-
-		.title {
-		    font-family: Helvetica;
-		    font-size: 30px;
-		}
-
-		.container {
-			background-color:#ffffff; 
-	    	text-align:left; 
-			overflow:hidden;
-			padding: 3%;
-	    	
-			
-			-webkit-border-radius: 10px; 
-			-moz-border-radius: 10px;
-			border-radius: 10px;
-			
-			border: 1px solid #aaa; 
-	        
-	        font-family: Helvetica;
-			font-size:14px;
-			color: #333;
-			
-			-moz-box-shadow: 0px 2px 4px 1px #aaa;
-			-webkit-box-shadow: 0px 2px 4px 1px #aaa;
-			box-shadow: 0px 2px 4px 1px #aaa;
-		}
-
-		.centered-container {
-			width: 50%;
-			margin:0 auto;
-			margin-top: 50px;
-		}
-
-		.logo-eyeos {
-		}
-
-		.form {
-			margin-top: 50px;
-			margin-bottom: 30px;
-		}
-
-		.hidden {
-			display:none;
-		}
-
-		.errormessage {
-			 cursor:pointer;
-			 cursor:hand;
-			 background: #FFE7E7 url('images/icons/cancel.png') center no-repeat;
-			 background-position: 15px 50%;
-			 text-align: left;
-			 padding: 5px 5px 5px 45px;
-			 border-top: 2px solid #E77D7B;
-			 border-bottom: 2px solid #E77D7B;
-			 border:2px solid #E77D7B;
-			 overflow:auto;
-			 font-size:1.0em;
-			 font-family:Verdana;
-			 width: 60%;
-		}
-
-		.buglist {
-			margin-top: 10px;
-			margin-bottom: 10px;
-		}
-
-		.bug {
-			cursor:pointer;
-			cursor:hand;
-			background: #BDE5F8 url('images/icons/bug.png') center no-repeat;
-			background-position: 15px 50%;
-			text-align: left;
-			padding: 5px 5px 5px 45px;
-			border-top: 2px solid #E77D7B;
-			border-bottom: 2px solid #E77D7B;
-			border:2px solid #E77D7B;
-			overflow:auto;
-			font-size:1.0em;
-			font-family:Verdana;
-			width: 60%;
-			color:#00529B;
-			margin-top: 1px;
-		}
-
-		.bug .number {
-		    background-color: palegoldenrod;
-		    border: 1px solid;
-		    border-radius: 10px 10px 10px 10px;
-		    margin: 5px;
-		    padding: 3px;
-		}
-
-		.bug .summary {
-
-		}
-
-		.masdatos {
-			border: 1px solid black;
-   			padding: 5%;
-		}
-
-		.bolded-text {
-			font-weight: bold;
-		}
-	</style>
-
+    <link type="text/css" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script>
+	
+    <script>
 		$(document).ready(function() {
 			var pn = $('#projectname');
 			var bugsarray = {};
@@ -176,13 +59,13 @@
 				e.preventDefault();
 				console.log(e);
 
-				if(!pn.val()) {
+				if( ! pn.val()) {
 					$('.errormessage').fadeIn('slow');
 					$('.errormessage').removeClass('hidden');
 					$('.errormessage').html('Write the name of the project first');
 				}
 				else {
-					$.get('client.php', {projectname: pn.val()}, function(e) {
+					$.get('connectMantis.php', {projectname: pn.val()}, function(e) {
 						try {
 							var object = eval('(' + e + ')');
 
@@ -246,25 +129,26 @@
 
 </head>
 <body>
-<div class="centered-container">
-	<div class="container">
-		<title>Mantis bug migration</title>
-		<header class="logo-eyeos">
-			<img src="http://resources.eyeos.org/partners/logoclaim.png" width="200" height="43" />
-		</header>
+    <div class="centered-container">
+        <div class="container">
+            <title>Mantis bug migration</title>
+            <header class="logo-eyeos">
+                <img src="http://resources.eyeos.org/partners/logoclaim.png" width="200" height="43" />
+            </header>
 
-		<div id="content">
-			<div class="title">Type the project name</div>
-			<div>Check the settings.php file to set your mantis endpoint</div>
-			<form class="form" action="#">
-				<input id="projectname" type="text" name="projectname" placeholder="Project Name">
-				<input type="submit">
-			</form>
-			<div class="errormessage hidden"></div>
-		</div>
+            <div id="content">
+                <div class="title">Type the project name</div>
+                <div>Check the settings.php file to set your mantis endpoint</div>
+                <form class="form" action="#">
+                    <input id="projectname" type="text" name="projectname" placeholder="Project Name">
+                    <input type="submit">
+                </form>
+                <div class="errormessage hidden"></div>
+            </div>
 
-	</div>
-	<footer class="version">
-	</footer>
+        </div>
+        <footer class="version">
+        </footer>
+    </div>
 </body>
 </html>

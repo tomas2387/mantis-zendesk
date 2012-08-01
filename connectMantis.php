@@ -14,8 +14,8 @@ $version = $soapclient->call( 'mc_version', array() );
 
 $projectID = $soapclient->call( 'mc_project_get_id_from_name', 
 									array(
-										'username' => 'administrator',
-										'password' => 'root',
+										'username' => MANTIS_USERNAME,
+										'password' => MANTIS_PASSWORD,
 										'project_name' => $pn
 										) );
 
