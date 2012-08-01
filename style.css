@@ -92,13 +92,11 @@ body {
     background-position: 15px 50%;
     text-align: left;
     padding: 5px 5px 5px 45px;
-    border-top: 2px solid #E77D7B;
-    border-bottom: 2px solid #E77D7B;
-    border:2px solid #E77D7B;
+    border:2px solid #92AE00;
     overflow:auto;
     font-size:1.0em;
     font-family:Verdana;
-    width: 60%;
+    width: 94%;
     color:#00529B;
     margin-top: 1px;
 }
@@ -125,4 +123,17 @@ body {
 
 .bolded-text {
     font-weight: bold;
+}
+
+#migrate {
+    background-color: #B2D7B5;
+    background-image: url("images/icons/arrow_branch.png");
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    left: 77%;
+    margin-top: 40px;
+    padding: 5px;
+    position: relative;
+    text-align: center;
+    width: 200px;
 }
