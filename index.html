@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
     <script>
 		$(document).ready(function() {
 			var pn = $('#projectname');
@@ -64,7 +63,7 @@
 					$('.errormessage').html('Write the name of the project first');
 				}
 				else {
-					$.get('connectMantis.php', {projectname: pn.val()}, function(e) {
+					$.get('mantis/connectMantis.php', {projectname: pn.val()}, function(e) {
 						try {
 							var object = eval('(' + e + ')');
 
