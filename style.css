@@ -11,6 +11,10 @@ body {
     color: gray; font-size: 9px;
 }
 
+.version .famfam {
+    float: right;
+}
+
 .title {
     font-size: 30px;
 }
@@ -41,7 +45,16 @@ body {
     margin-top: 50px;
 }
 
-.logo-eyeos {
+.logo, .logo:hover {
+    background: url("images/open-source-icons.jpg") no-repeat scroll -80px 0 #FFFFFF;
+    height: 50px;
+    width: 50px;
+    margin-left: 15px;
+    float: left;
+}
+
+.logo-title {
+    font-size: 40px;
 }
 
 .form {
