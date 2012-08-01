@@ -1,4 +1,9 @@
 mantis-zendesk
 ==============
 
-Mantis bugs migration to Zendesk 
+PHP Application to migrate Mantis bugs to your Zendesk, as issues.
+
+By 
+Tomás Prado
+Brahim Lachguer
+Mustapha Koumach
