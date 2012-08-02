@@ -9,28 +9,6 @@
 			var pn = $('#projectname');
 			var bugsarray = {};
 
-			function dump(arr, level) {
-				var dumped_text = "";
-
-				if(!level) level = 0;
-
-				var level_padding = "<div style='margin-left: "+level*12+"px'>'";
-				
-				if(typeof(arr) == 'object') { //Array/Hashes/Objects 
-					for(var item in arr) {
-						var value = arr[item];
-						
-						if(typeof(value) == 'object') { //If it is an array,
-							dumped_text += level_padding +"'"+ item + "' ...</div>";
-							dumped_text += dump(value,level+1);
-						} else {
-							dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n </div>";
-						}
-					}
-				}
-				return dumped_text;
-			}
-
 			function prettyPrint(arr) {
 				var dumped = "";
 				if(typeof(arr) == 'object') { //Array/Hashes/Objects 
@@ -50,7 +28,6 @@
 						}
 					}
 				}
-
 				return dumped;
 			}
 
