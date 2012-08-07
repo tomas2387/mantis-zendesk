@@ -1,0 +1,35 @@
+* About to connect() to eyeos.zendesk.com port 443 (#0)
+*   Trying 108.166.31.242... * connected
+* successfully set certificate verify locations:
+*   CAfile: none
+  CApath: /etc/ssl/certs
+* SSL connection using RC4-SHA
+* Server certificate:
+* 	 subject: C=US; postalCode=94107; ST=California; L=San Francisco; street=410 Townsend St; O=Zendesk; OU=Zendesk; OU=PremiumSSL Wildcard; CN=*.zendesk.com
+* 	 start date: 2011-09-07 00:00:00 GMT
+* 	 expire date: 2014-09-06 23:59:59 GMT
+* 	 subjectAltName: eyeos.zendesk.com matched
+* 	 issuer: C=GB; ST=Greater Manchester; L=Salford; O=COMODO CA Limited; CN=COMODO High-Assurance Secure Server CA
+* 	 SSL certificate verify ok.
+* Server auth using Basic with user 'brahim.lachguer@eyeos.org/token'
+> POST /api/v2/tickets.json HTTP/1.1
+Authorization: Basic YnJhaGltLmxhY2hndWVyQGV5ZW9zLm9yZy90b2tlbjpRcEd5QWJnOWV1cEdabzFRNWJDaFl6RGt0blljODhlZlNUQk5oYlFU
+User-Agent: MozillaXYZ/1.0
+Host: eyeos.zendesk.com
+Accept: */*
+Content-type: application/json
+Content-Length: 85
+
+* upload completely sent off: 85out of 85 bytes
+< HTTP/1.1 422 Unprocessable Entity
+< Server: nginx/1.0.15
+< Date: Fri, 03 Aug 2012 14:26:48 GMT
+< Content-Type: application/json; charset=utf-8
+< Connection: keep-alive
+< Status: 422 Unprocessable Entity
+< Cache-Control: no-cache
+< X-Zendesk-API-Version: v2
+< Content-Length: 177
+< 
+* Connection #0 to host eyeos.zendesk.com left intact
+* Closing connection #0

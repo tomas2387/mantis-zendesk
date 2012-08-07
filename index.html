@@ -96,7 +96,11 @@
 			});
 
 			$('#migrate').live('click', function(e) {
-				console.log(JSON.stringify(bugsarray));
+                var jsonbugs = JSON.stringify(bugsarray);
+				console.log(jsonbugs);
+                $.post('zendesk/zdticket.php', {arrayBugs: bugsarray}, function(e) {
+                    console.log(e);
+                });
 			});
 		});
 	</script>

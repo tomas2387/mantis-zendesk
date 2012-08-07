@@ -1,18 +1,11 @@
 <?php
-isset($_GET['projectname']) || die('No project name!');
-
-$pn = $_GET['projectname'];
-
 require_once('mantisWrapper.php');
-
 $mw = new mantisWrapper();
-$projectID = $mw->getProjectIdFromName($pn);
-
-if(!isset($projectID) || empty($projectID)) {
-    die(json_encode( array('error' => "That project doesn't exists!") ));
+if(isset($_GET['projectname'])) {
+    $projectID = $mw->getProjectIdFromName($_GET['projectname']);
+    isset($projectID) || ! empty($projectID) || die(json_encode( array('error' => "That project doesn't exists!") ));
+    echo json_encode(array('result' => $mw->getProjectIssues($projectID), 'version' => $mw->getVersion()) );
 }
+else if(isset($_GET['getProjects'])) {
 
-$result = $mw->getProjectIssues($projectID);
-$version = $mw->getVersion();
-
-echo json_encode(array('result' => $result, 'version' => $version) );
+}
