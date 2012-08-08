@@ -1,38 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="script.js"></script>
-</head>
-<body>
-    <div class="centered-container">
-        <div class="container">
-            <title>Mantis bug migration</title>
-            <header>
-                <div class="logo"></div>
-                <div class="logo-title">
-                    <span>Mantis</span><span class="two-logo">2</span><span class="zendesk-logo-text">Zendesk</span>
-                </div>
-            </header>
+                <script src="resources/js/index.js"></script>
 
-            <div id="content">
-                <div class="title">Type the Mantis project name</div>
-                <div>Check the settings.php file to set your mantis endpoint</div>
-                <form class="form" action="#">
-                    <input id="projectName" type="text" name="projectName" placeholder="Project Name">
-                    <input type="submit">
+                <div class="title">Select the Mantis Project</div>
+                <div>Check the settings.php file to set correctly your mantis endpoint and zendesk API Key</div>
+                <form class="form" action="" method="get">
+                    <input type="hidden" name="buglist" value="1">
+                    <select name="project">
+                        <?php foreach ($arrayMantisProjects as $project): ?>
+                        <option value="<?php echo $project['id']; ?>">
+                            <?php echo $project['name']; ?>
+                        </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <input type="submit" value="Next">
                 </form>
                 <div class="errormessage hidden"></div>
-            </div>
-
-        </div>
-        <footer class="version">
-            <div class="famfam">
-                <a href="http://www.famfamfam.com/lab/icons/silk/">Icons by Mark James</a>
-            </div>
-        </footer>
-    </div>
-</body>
-</html>

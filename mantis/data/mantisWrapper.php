@@ -6,8 +6,8 @@
  * Time: 10:13 AM
  * To change this template use File | Settings | File Templates.
  */
-include('../../settings.php');
-include(NUSOAP);
+require_once('settings.php');
+require_once(NUSOAP);
 
 
 class mantisWrapper {

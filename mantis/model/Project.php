@@ -1,12 +1,5 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: tomasprado
- * Date: 8/1/12
- * Time: 5:46 PM
- */
-
-class Project {
+class Project extends Object {
 
     private $id;
     private $name;

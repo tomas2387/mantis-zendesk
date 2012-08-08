@@ -1,7 +1,6 @@
 <?php
 include('../settings.php');
 
-/* Note: do not put a trailing slash at the end of v2 */
 
 function curlWrap($url, $json)
 {

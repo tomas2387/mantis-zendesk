@@ -16,20 +16,10 @@ class connectMantis {
     }
 
     public function getProjects() {
-        $projects = $this->mw->getProjects();
-        return $projects;
+        return $this->mw->getProjects();
     }
 
     public function getVersion() {
         return $this->mw->getVersion();
     }
-};
-
-
-$cm = new connectMantis();
-if(isset($_GET['projectName'])) {
-    echo json_encode( array('result' => $cm->getIssues($_GET['projectName']), 'version' => $cm->getVersion()) );
-}
-else if(isset($_GET['getProjects'])) {
-    echo json_encode(array('results' => $cm->getProjects()));
 }

@@ -42,7 +42,7 @@
  *
  */
 
-class Bug {
+class Bug extends Object {
     private $id;
     private $category;
     private $priority;

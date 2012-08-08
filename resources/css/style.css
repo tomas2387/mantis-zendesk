@@ -34,15 +34,14 @@ body {
     font-size:14px;
     color: #333;
 
-    -moz-box-shadow: 0px 2px 4px 1px #aaa;
-    -webkit-box-shadow: 0px 2px 4px 1px #aaa;
-    box-shadow: 0px 2px 4px 1px #aaa;
+    -moz-box-shadow: 0 2px 4px 1px #aaa;
+    -webkit-box-shadow: 0 2px 4px 1px #aaa;
+    box-shadow: 0 2px 4px 1px #aaa;
 }
 
 .centered-container {
     width: 50%;
-    margin:0 auto;
-    margin-top: 50px;
+    margin: 50px auto 0;
 }
 
 .logo, .logo:hover {
@@ -60,9 +59,9 @@ body {
 .two-logo {
     color: red;
     font-size: 50px;
-    text-shadow: 0px 0px 2px rgb(85, 85, 85);
+    text-shadow: 0 0 2px rgb(85, 85, 85);
     display: block; -moz-transform: rotate(-27deg);
-    position: relative; height: 0px; width: 0px; left: 162px; top: -53px;
+    position: relative; height: 0; width: 0; left: 162px; top: -53px;
 }
 
 .zendesk-logo-text {
@@ -70,8 +69,8 @@ body {
 }
 
 .form {
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin: 50px auto 30px;
+    text-align: center;
 }
 
 .hidden {
@@ -80,17 +79,16 @@ body {
 
 .errormessage {
     cursor:pointer;
-    background: #FFE7E7 url('../images/icons/cancel.png') center no-repeat;
-    background-position: 15px 50%;
+    background: #FFE7E7 url('../images/icons/cancel.png') no-repeat 15px 50%;
     text-align: left;
     padding: 5px 5px 5px 45px;
-    border-top: 2px solid #E77D7B;
-    border-bottom: 2px solid #E77D7B;
-    border:2px solid #E77D7B;
+    border: 2px solid #E77D7B;
     overflow:auto;
     font-size:1.0em;
     font-family:Verdana;
     width: 60%;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .buglist {
@@ -100,8 +98,7 @@ body {
 
 .bug {
     cursor:pointer;
-    background: #BDE5F8 url('../images/icons/bug.png') center no-repeat;
-    background-position: 15px 50%;
+    background: #BDE5F8 url('../images/icons/bug.png') no-repeat 15px 50%;
     text-align: left;
     padding: 5px 5px 5px 45px;
     border:2px solid #92AE00;
@@ -138,10 +135,7 @@ body {
 }
 
 #migrate {
-    background-color: #B2D7B5;
-    background-image: url("../images/icons/arrow_branch.png");
-    background-position: 5px 5px;
-    background-repeat: no-repeat;
+    background: #B2D7B5 url("../images/icons/arrow_branch.png") no-repeat 5px 5px;
     left: 77%;
     margin-top: 40px;
     padding: 5px;

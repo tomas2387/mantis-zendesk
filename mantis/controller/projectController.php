@@ -1,12 +1,17 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: tomasprado
- * Date: 8/8/12
- * Time: 12:24 PM
- * To change this template use File | Settings | File Templates.
- */
+
+require_once(MANTIS2ZENDESK_ROOT.'/mantis/data/connectMantis.php');
+
 class projectController
 {
+    private $cm;
+    public function __construct() {
+        $this->cm = new connectMantis();
+    }
 
+    public function getMantisProjects()
+    {
+        $arrayProjects = $this->cm->getProjects();
+        return $arrayProjects;
+    }
 }
