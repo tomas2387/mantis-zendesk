@@ -4,7 +4,7 @@ body {
 }
 
 #content {
-    padding-top: 50px;
+
 }
 
 .version {
@@ -46,7 +46,7 @@ body {
 }
 
 .logo, .logo:hover {
-    background: url("images/open-source-icons.jpg") no-repeat scroll -80px 0 #FFFFFF;
+    background: url("../images/open-source-icons.jpg") no-repeat scroll -80px 0 #FFFFFF;
     height: 50px;
     width: 50px;
     margin-left: 15px;
@@ -55,6 +55,18 @@ body {
 
 .logo-title {
     font-size: 40px;
+}
+
+.two-logo {
+    color: red;
+    font-size: 50px;
+    text-shadow: 0px 0px 2px rgb(85, 85, 85);
+    display: block; -moz-transform: rotate(-27deg);
+    position: relative; height: 0px; width: 0px; left: 162px; top: -53px;
+}
+
+.zendesk-logo-text {
+    position: relative; top: -50px; left: 200px;
 }
 
 .form {
@@ -68,7 +80,7 @@ body {
 
 .errormessage {
     cursor:pointer;
-    background: #FFE7E7 url('images/icons/cancel.png') center no-repeat;
+    background: #FFE7E7 url('../images/icons/cancel.png') center no-repeat;
     background-position: 15px 50%;
     text-align: left;
     padding: 5px 5px 5px 45px;
@@ -88,7 +100,7 @@ body {
 
 .bug {
     cursor:pointer;
-    background: #BDE5F8 url('images/icons/bug.png') center no-repeat;
+    background: #BDE5F8 url('../images/icons/bug.png') center no-repeat;
     background-position: 15px 50%;
     text-align: left;
     padding: 5px 5px 5px 45px;
@@ -127,7 +139,7 @@ body {
 
 #migrate {
     background-color: #B2D7B5;
-    background-image: url("images/icons/arrow_branch.png");
+    background-image: url("../images/icons/arrow_branch.png");
     background-position: 5px 5px;
     background-repeat: no-repeat;
     left: 77%;

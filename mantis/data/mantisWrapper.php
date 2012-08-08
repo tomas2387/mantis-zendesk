@@ -6,7 +6,7 @@
  * Time: 10:13 AM
  * To change this template use File | Settings | File Templates.
  */
-include('../settings.php');
+include('../../settings.php');
 include(NUSOAP);
 
 
@@ -39,6 +39,16 @@ class mantisWrapper {
                 'page_number' => $pageNumber,
                 'per_page' => $perPage
             ) );
+    }
+
+    public function getProjects()
+    {
+        return $this->soapclient->call('mc_projects_get_user_accessible',
+            array(
+                'username' => MANTIS_USERNAME,
+                'password' => MANTIS_PASSWORD
+                )
+        );
     }
 
 }

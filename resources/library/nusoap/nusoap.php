@@ -5427,7 +5427,7 @@ class wsdl extends nusoap_base {
 			<div class=title>'.htmlentities($this->serviceName).'</div>
 			<div class=nav>
 				<p>View the <a href="'.htmlentities($PHP_SELF).'?wsdl">WSDL</a> for the service.
-				Click on an operation name to view it&apos;s details.</p>
+				Click on an operation name to views it&apos;s details.</p>
 				<ul>';
 				foreach($this->getOperations() as $op => $data){
 				    $b .= "<li><a href='#' onclick=\"popout();popup('$op')\">$op</a></li>";
