@@ -1,20 +1,29 @@
 <?php
 
-require_once(MANTIS2ZENDESK_ROOT.'/mantis/data/connectMantis.php');
+require_once(MANTIS2ZENDESK_ROOT . '/mantis/data/connector.php');
 
-class userController
-{
+class userController {
+    private $cm;
+
     public function __construct() {
-
+        $this->cm = new connectMantis();
     }
 
-    public function getMantisReporters()
+    public function getMantisReporters($projectId)
     {
+        $arrayReporters = array();
+        $arrayIssues = $this->cm->getIssuesByProjectId($projectId);
+        foreach ($arrayIssues as $issue) {
+            $arrayReporters[] = $issue['reporter']['name'];
+        }
+        $arrayReporters = array_unique($arrayReporters);
 
+        return $arrayReporters;
     }
 
     public function getZendeskReporters()
     {
+        $this->cm->getZendeskReporters();
     }
 
 }

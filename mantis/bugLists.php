@@ -3,7 +3,7 @@ require_once(MANTIS2ZENDESK_ROOT.'/mantis/controller/userController.php');
 require_once(MANTIS2ZENDESK_ROOT.'/mantis/controller/bugsController.php');
 
 $uc = new userController();
-$arrayMantisReporters = $uc->getMantisReporters();
+$arrayMantisReporters = $uc->getMantisReporters($_GET['bugList']);
 $arrayZendeskReporters = $uc->getZendeskReporters();
 
 $bc = new bugsController();

@@ -1,5 +1,5 @@
 
-            <script src="../../resources/js/index.js"></script>
+            <script src="resources/js/index.js"></script>
             <div id="settings">
                 <span>Settings: Users mapping</span>
                 <div>

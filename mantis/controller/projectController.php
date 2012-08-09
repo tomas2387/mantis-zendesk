@@ -1,6 +1,6 @@
 <?php
 
-require_once(MANTIS2ZENDESK_ROOT.'/mantis/data/connectMantis.php');
+require_once(MANTIS2ZENDESK_ROOT . '/mantis/data/connector.php');
 
 class projectController
 {

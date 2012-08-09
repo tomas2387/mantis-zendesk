@@ -18,12 +18,4 @@ $(document).ready(function() {
             }
         }
     });
-
-    $('#migrate').live('click', function(e) {
-        var jsonbugs = JSON.stringify(bugsarray);
-        console.log(jsonbugs);
-        $.post('zendesk/zdticket.php', {arrayBugs: bugsarray}, function(e) {
-            console.log(e);
-        });
-    });
 });

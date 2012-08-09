@@ -6,7 +6,7 @@ if( empty($_GET) ) {
     require_once(MANTIS2ZENDESK_ROOT.'/mantis/selectProject.php');
 }
 else {
-    if( isset($_GET['buglist']) ) {
+    if( isset($_GET['bugList']) ) {
         require_once(MANTIS2ZENDESK_ROOT.'/mantis/bugLists.php');
     }
 }
