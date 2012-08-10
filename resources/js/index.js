@@ -18,4 +18,9 @@ $(document).ready(function() {
             }
         }
     });
+
+
+    $('#migrate').live('submit', function(e) {
+
+    });
 });

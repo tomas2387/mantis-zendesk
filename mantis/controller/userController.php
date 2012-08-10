@@ -6,7 +6,7 @@ class userController {
     private $cm;
 
     public function __construct() {
-        $this->cm = new connectMantis();
+        $this->cm = new connector();
     }
 
     public function getMantisReporters($projectId)
@@ -23,7 +23,7 @@ class userController {
 
     public function getZendeskReporters()
     {
-        $this->cm->getZendeskReporters();
+        return $this->cm->getZendeskReporters();
     }
 
 }

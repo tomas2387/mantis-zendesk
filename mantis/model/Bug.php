@@ -42,7 +42,7 @@
  *
  */
 
-class Bug extends Object {
+class Bug extends m2zObject {
     private $id;
     private $category;
     private $priority;

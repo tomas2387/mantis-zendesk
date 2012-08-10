@@ -1,9 +1,20 @@
 <?php
-require_once('settings.php');
+require_once(MANTIS2ZENDESK_ROOT . '/settings.php');
 
 class zendeskWrapper {
     public function __construct() {
 
+    }
+
+    public function getUsers() {
+        $usersZendeskNames = array();
+        $arrayUsers = $this->curlWrap('/users.json', NULL, "GET");
+
+        foreach ($arrayUsers->users as $user) {
+            $usersZendeskNames[] = $user->name;
+        }
+
+        return $usersZendeskNames;
     }
 
     private function curlWrap($url, $json, $action)
@@ -40,11 +51,5 @@ class zendeskWrapper {
         curl_close($ch);
         $decoded = json_decode($output);
         return $decoded;
-    }
-
-    public function getUsers() {
-        $result = curlWrap('/users/me.json', NULL, "GET");
-        var_dump($result);
-        return $result;
     }
 }

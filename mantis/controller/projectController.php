@@ -6,12 +6,11 @@ class projectController
 {
     private $cm;
     public function __construct() {
-        $this->cm = new connectMantis();
+        $this->cm = new connector();
     }
 
     public function getMantisProjects()
     {
-        $arrayProjects = $this->cm->getProjects();
-        return $arrayProjects;
+        return $this->cm->getProjects();;
     }
 }

@@ -1,5 +1,5 @@
 <?php
-class Object
+class m2zObject
 {
     var $updtFields;//keep track of affected values
     function Object($record="") {

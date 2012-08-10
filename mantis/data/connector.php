@@ -2,7 +2,7 @@
 require_once('mantisWrapper.php');
 require_once('zendeskWrapper.php');
 
-class connectMantis {
+class connector {
     private $mw;
     private $zw;
 

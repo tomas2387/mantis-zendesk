@@ -19,6 +19,18 @@ body {
     font-size: 30px;
 }
 
+.title2 {
+    font-size: 19px;
+    color: gray;
+    border-bottom: 1px dotted dimgrey;
+    margin-bottom: 10px;
+}
+
+.title2 span {
+    position: relative;
+    top: 5px;
+}
+
 .container {
     background-color:#ffffff;
     text-align:left;
@@ -54,6 +66,7 @@ body {
 
 .logo-title {
     font-size: 40px;
+    height: 60px;
 }
 
 .two-logo {
@@ -91,7 +104,7 @@ body {
     margin: 0 auto;
 }
 
-.buglist {
+.block {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -128,6 +141,7 @@ body {
 .masdatos {
     border: 1px solid black;
     padding: 5%;
+    cursor: default;
 }
 
 .bolded-text {
