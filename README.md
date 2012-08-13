@@ -11,3 +11,6 @@ Brahim Lachguer
 
 Mustapha Koumach
 
+
+AGPL-3.0
+
