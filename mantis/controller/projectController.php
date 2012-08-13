@@ -11,6 +11,6 @@ class projectController
 
     public function getMantisProjects()
     {
-        return $this->cm->getProjects();;
+        return $this->cm->getProjects();
     }
 }

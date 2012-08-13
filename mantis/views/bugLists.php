@@ -1,20 +1,21 @@
 
 <script src="resources/js/index.js"></script>
-<form action="index.php?migrate=" method="POST">
+<form action="index.php?migrate=<?php echo $_GET['project']; ?>" method="POST">
     <div class="block">
         <div class="title2"><span>Users Mapping</span></div>
         <div>
             <?php foreach($arrayMantisReporters as $MantisUser): ?>
-            <div>
+                <div>
                     <span>
                         The mantis user <span style="color: gray; font-weight: bold">"<?php echo $MantisUser; ?>"</span> in Zendesk is going to be <img src="resources/images/icons/arrow_right.png" style="position: relative; top: 3px;">
                     </span>
-                <select name="reporter">
-                    <option value=<?php echo '"'.$MantisUser.'"'; ?> >
-                        <?php echo implode('</option><option>', $arrayZendeskReporters); ?>
-                    </option>
-                </select>
-            </div>
+
+                    <select name="<?php echo $MantisUser; ?>">
+                        <?php foreach($arrayZendeskReporters as $ZendeskUser): ?>
+                            <option value="<?php echo $ZendeskUser->id; ?>" ><?php echo $ZendeskUser->name; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
             <?php endforeach; ?>
         </div>
     </div>

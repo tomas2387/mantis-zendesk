@@ -5,8 +5,11 @@ require_once(MANTIS2ZENDESK_ROOT . '/mantis/data/connector.php');
 class userController {
     private $cm;
 
-    public function __construct() {
-        $this->cm = new connector();
+    public function __construct($connector=NULL) {
+        if(empty($connector)) {
+            $this->cm = new connector();
+        }
+        else $this->cm = $connector;
     }
 
     public function getMantisReporters($projectId)
@@ -23,7 +26,23 @@ class userController {
 
     public function getZendeskReporters()
     {
-        return $this->cm->getZendeskReporters();
+        $arrayResult = array();
+
+        $userObjects = $this->cm->getZendeskReporters();
+
+        foreach($userObjects->users as $user) {
+            if( ! empty($user->email)) {
+                $arrayResult[] = $user;
+            }
+        }
+
+        return $arrayResult;
+    }
+
+    public function getThisZendeskReporter($userZendeskId)
+    {
+        $user = $this->cm->getThisZendeskReporter($userZendeskId);
+        return $user->user;
     }
 
 }

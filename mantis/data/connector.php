@@ -34,4 +34,14 @@ class connector {
     {
         return $this->zw->getUsers();
     }
+
+    public function getThisZendeskReporter($userZendeskId)
+    {
+        return $this->zw->getUser($userZendeskId);
+    }
+
+    public function sendTicketsToZendesk($ZendeskTicketsObjects)
+    {
+        return $this->zw->createTickets($ZendeskTicketsObjects);
+    }
 }
