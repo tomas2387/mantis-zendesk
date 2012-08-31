@@ -2,8 +2,13 @@
 define( '__ROOT__', dirname(dirname(__FILE__)) );
 define( 'MANTIS2ZENDESK_ROOT', __ROOT__.'/mantis-zendesk' );
 
+$uc = new projectController();
+$arrayMantisProjects = $uc->getMantisProjects();
+
+
 if( empty($_GET) ) {
-    require_once(MANTIS2ZENDESK_ROOT.'/mantis/selectProject.php');
+    $view = new selectProjectView();
+    $view->renderView($arrayMantisProjects);
 }
 else if( isset($_GET['bugList']) ) {
     require_once(MANTIS2ZENDESK_ROOT.'/mantis/bugLists.php');
