@@ -1,36 +1,43 @@
+<?php
 
-<script src="resources/js/index.js"></script>
-<form action="index.php?migrate=<?php echo $_GET['project']; ?>" method="POST">
-    <div class="block">
-        <div class="title2"><span>Users Mapping</span></div>
-        <div>
-            <?php foreach($arrayMantisReporters as $MantisUser): ?>
-                <div>
-                    <span>
-                        The mantis user <span style="color: gray; font-weight: bold">"<?php echo $MantisUser; ?>"</span> in Zendesk is going to be <img src="resources/images/icons/arrow_right.png" style="position: relative; top: 3px;">
-                    </span>
+class bugListView
+{
 
-                    <select name="<?php echo $MantisUser; ?>">
-                        <?php foreach($arrayZendeskReporters as $ZendeskUser): ?>
-                            <option value="<?php echo $ZendeskUser->id; ?>" ><?php echo $ZendeskUser->name; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-    <div class="block">
-        <div class="title2"><span>Bug List</span></div>
-        <?php foreach($arrayMantisBugs as $bug): ?>
-        <div class="bug">
-            <span class="number"><?php echo $bug['id']; ?></span>
-            <span class="summary" title="'+value.description+'"><?php echo $bug['summary']; ?></span>
-            <div class="masdatos hidden">
-                <div><span class="bolded-text">Description:</span><?php echo $bug['description']; ?></div>
-                <div><span class="bolded-text">Reporter:</span><?php echo $bug['reporter']['name']; ?></div>
-            </div>
-        </div>
-        <?php endforeach; ?>
-    </div>
-    <button type="submit" id="migrate">Move all to Zendesk</button>
-</form>
+    function renderView($idProject, $arrayMantisReporters, $arrayZendeskReporters, $arrayMantisBugs)
+    {
+        if( empty($idProject)) {
+            throw new Exception('Bug List View needs a project id');
+        }
+
+        if( empty($arrayMantisReporters)) $arrayMantisReporters = array();
+        if( empty($arrayZendeskReporters)) $arrayZendeskReporters = array();
+        if( empty($arrayMantisBugs)) $arrayMantisBugs = array();
+
+        $result = '<script src="resources/js/index.js"></script><form action="index.php?migrate='.$idProject.'" method="POST">';
+
+        $usersMapping = '<div class="block"><div class="title2"><span>Users Mapping</span></div><div>';
+        foreach($arrayMantisReporters as $MantisUser) {
+            $usersMapping .= '<div><span>The mantis user <span style="color: gray; font-weight: bold">"'.$MantisUser.'"</span> in Zendesk is going to be <img src="resources/images/icons/arrow_right.png" style="position: relative; top: 3px;"></span>';
+
+            $selectMapping = '<select name="'.$MantisUser.'">';
+            foreach($arrayZendeskReporters as $ZendeskUser) {
+                $selectMapping .= '<option value="'.$ZendeskUser->id.'">'.$ZendeskUser->name.'</option>';
+            }
+            $selectMapping .= '</select>';
+
+            $usersMapping .= $selectMapping . '</div>';
+        }
+        $usersMapping .= '</div></div>';
+
+        $bugList = '<div class="block"><div class="title2"><span>Bug List</span></div>';
+        foreach($arrayMantisBugs as $bug) {
+            $bugList .= '<div class="bug"><span class="number">'.$bug['id'].'</span><span class="summary" title="description">'.$bug['summary'].'</span>';
+            $bugList .= '<div class="masdatos hidden"><div><span class="bolded-text">Description:</span>'.$bug['description'].'</div>';
+            $bugList .= '<div><span class="bolded-text">Reporter:</span>'.$bug['reporter']['name'].'</div></div></div>';
+        }
+        $bugList .= '</div>';
+        $result .= $usersMapping.$bugList.'<button type="submit" id="migrate">Move all to Zendesk</button></form>';
+
+        return $result;
+    }
+}
