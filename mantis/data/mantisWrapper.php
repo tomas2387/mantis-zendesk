@@ -6,8 +6,8 @@
  * Time: 10:13 AM
  * To change this template use File | Settings | File Templates.
  */
-require_once(MANTIS2ZENDESK_ROOT . '/settings.php');
-require_once(NUSOAP);
+include (MANTIS2ZENDESK_ROOT . '/settings.php');
+include (NUSOAP);
 
 
 class mantisWrapper {

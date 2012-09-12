@@ -1,6 +1,6 @@
 <?php
-require_once(MANTIS2ZENDESK_ROOT . '/mantis/data/connector.php');
-require_once(MANTIS2ZENDESK_ROOT . '/mantis/controller/userController.php');
+include (MANTIS2ZENDESK_ROOT . '/mantis/data/connector.php');
+include (MANTIS2ZENDESK_ROOT . '/mantis/controller/userController.php');
 
 class bugsController
 {
