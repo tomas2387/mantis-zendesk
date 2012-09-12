@@ -2,15 +2,16 @@
 define( '__ROOT__', dirname(dirname(__FILE__)) );
 define( 'MANTIS2ZENDESK_ROOT', __ROOT__.'/mantis-zendesk' );
 
+require_once(MANTIS2ZENDESK_ROOT.'/mantis/controller/projectController.php');
 require_once(MANTIS2ZENDESK_ROOT.'/mantis/controller/userController.php');
 require_once(MANTIS2ZENDESK_ROOT.'/mantis/controller/bugsController.php');
 
 
-$uc = new projectController();
-$arrayMantisProjects = $uc->getMantisProjects();
-
 
 if( empty($_GET) ) {
+    $uc = new projectController();
+    $arrayMantisProjects = $uc->getMantisProjects();
+
     $view = new selectProjectView();
     $view->renderView($arrayMantisProjects);
 }
@@ -26,10 +27,11 @@ else if( isset($_GET['bugList']) ) {
     $view->renderView($_GET['bugList'], $arrayMantisReporters, $arrayZendeskReporters, $arrayMantisBugs);
 }
 else if( isset($_GET['migrate']) ) {
+    $bc = new bugsController();
+    $result = $bc->bugsToZendeskTickets(intval($_GET['migrate']), $_POST);
 
     $view = new migrateView();
-    $view->
-    require_once(MANTIS2ZENDESK_ROOT.'/mantis/migrate.php');
+    $view->renderView($result);
 }
 else {
     require_once(MANTIS2ZENDESK_ROOT.'/resources/error404.html');
