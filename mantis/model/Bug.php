@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Created by JetBrains PhpStorm.
  * User: tomasprado
@@ -44,6 +45,9 @@
 
 class Bug
 {
+=======
+class Bug extends Item {
+>>>>>>> 60f310fbeb242cc399ad1baaa424198d5b198ac1
     private $id;
     private $category;
     private $priority;
@@ -209,5 +213,39 @@ class Bug
     public function getTags()
     {
         return $this->tags;
+    }
+
+    function renderView()
+    {
+        $bugHtml = "";
+        if( ! empty($this->id)) {
+            $bugHtml .= '<div class="bug">';
+            $bugHtml .= '<span class="number">'.$this->id.'</span>';
+
+            if( ! empty($this->summary))
+                $bugHtml .= '<span class="summary" title="description">'.$this->summary.'</span>';
+
+            $masDatos = '<div class="masdatos hidden">';
+
+            if( ! empty($this->description)) {
+                $masDatos .= '<div><span class="bolded-text">Description:</span>'.$this->description.'</div>';
+            }
+            else {
+                $masDatos .= '<div>No data for description</div>';
+            }
+
+            if( ! empty($this->reporter)) {
+                $masDatos .= '<div><span class="bolded-text">Reporter:</span>'.$this->reporter->getName().'</div>';
+            }
+            else {
+                $masDatos .= '<div>No data for Reporter</div>';
+            }
+
+            $masDatos .= '</div>';
+
+            $bugHtml .= $masDatos . '</div>';
+        }
+
+        return $bugHtml;
     }
 }
