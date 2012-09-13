@@ -6,14 +6,11 @@ require_once(MANTIS2ZENDESK_ROOT.'/mantis/controller/projectController.php');
 require_once(MANTIS2ZENDESK_ROOT.'/mantis/controller/userController.php');
 require_once(MANTIS2ZENDESK_ROOT.'/mantis/controller/bugsController.php');
 
-
-
 if( empty($_GET) ) {
     $uc = new projectController();
     $arrayMantisProjects = $uc->getMantisProjects();
 
-    $view = new selectProjectView();
-    $html = $view->renderView($arrayMantisProjects);
+    $view = new selectProjectView($arrayMantisProjects);
 }
 else if( isset($_GET['bugList']) ) {
     $uc = new userController();
@@ -23,21 +20,25 @@ else if( isset($_GET['bugList']) ) {
     $bc = new bugsController();
     $arrayMantisBugs = $bc->getMantisBugs($_GET['project']);
 
-    $view = new bugListView();
-    $html = $view->renderView($_GET['bugList'], $arrayMantisReporters, $arrayZendeskReporters, $arrayMantisBugs);
+    $view = new bugListView($_GET['bugList'], $arrayMantisReporters, $arrayZendeskReporters, $arrayMantisBugs);
 }
 else if( isset($_GET['migrate']) ) {
     $bc = new bugsController();
     $result = $bc->bugsToZendeskTickets(intval($_GET['migrate']), $_POST);
 
-    $view = new migrateView();
-    $html = $view->renderView($result);
+    $view = new migrateView($result);
 }
 else {
     $view = new errorView();
-    $html = $view->renderView();
 }
 
+$header = new Header();
+$footer = new Footer();
 
 $gView = new generalView();
-$gView->render(file_get_contents('resources/header.html'), $html, file_get_contents('resources/footer.html'));
+
+$gView->addItem($header);
+$gView->addItem($view);
+$gView->addItem($footer);
+
+echo $gView->render();

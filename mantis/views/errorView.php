@@ -6,7 +6,7 @@
  * Time: 18:39
  * To change this template use File | Settings | File Templates.
  */
-class errorView
+class errorView extends Item
 {
     public function renderView()
     {

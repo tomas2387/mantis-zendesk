@@ -7,20 +7,17 @@
  * To change this template use File | Settings | File Templates.
  */
 
+require_once "../../mantis/views/Item.php";
 require_once "../../mantis/views/migrate.php";
-
-class result {
-    public $id;
-    public $text = "hola";
-}
+require_once "../../mantis/model/Result.php";
 
 
 class migrateTest extends PHPUnit_Framework_TestCase
 {
     private function verifyRenderView($result, $expected)
     {
-        $view = new migrateView();
-        $actual = $view->renderView($result);
+        $view = new migrateView($result);
+        $actual = $view->renderView();
         $this->assertEquals($actual, $expected);
     }
 
@@ -32,7 +29,7 @@ class migrateTest extends PHPUnit_Framework_TestCase
 */
 public function test_renderView_idEqualsOne__returnCorrect(){
 
-    $result = new result();
+    $result = new Result();
     $result->id = 1;
 
     $shouldResult = '<div class="title">Done</div><div>Bugs correctly migrated to Zendesk</div>';
@@ -47,7 +44,7 @@ public function test_renderView_idEqualsOne__returnCorrect(){
     */
     public function test_renderView_idEqualsZero__returnError(){
 
-         $result = new result();
+         $result = new Result();
 
 
         $result->id = 0;
@@ -63,9 +60,10 @@ public function test_renderView_idEqualsOne__returnCorrect(){
     * with:
     * should: returnError
     */
+    /*
     public function test_renderView_idfrom2to1000000__returnError(){
 
-        $result = new result();
+        $result = new Result();
 
         for ($i = 2; $i < 1000000; $i++) {
         $result->id = $i;
@@ -74,7 +72,7 @@ public function test_renderView_idEqualsOne__returnCorrect(){
 
         $this->verifyRenderView($result,$shouldResult);
         }
-    }
+    }*/
     
     /**
     * method: renderView
@@ -83,7 +81,7 @@ public function test_renderView_idEqualsOne__returnCorrect(){
     * should: returnError
     */
     public function test_renderView_idNull__returnError(){
-        $result = new result();
+        $result = new Result();
 
 
         $result->id = NULL;
@@ -92,8 +90,20 @@ public function test_renderView_idEqualsOne__returnCorrect(){
 
         $this->verifyRenderView($result,$shouldResult);
     }
-}
 
+    /**
+    * method: renderView
+    * when: resultNULL
+    * with:
+    * should: returnError
+    */
+    public function test_renderView_resultNULL__returnError(){
+        $result = NULL;
+        $shouldResult = '<div class="title">Done</div><div>There was an error</div><div></div>';
+
+        $this->verifyRenderView($result,$shouldResult);
+    }
+}
 
 
 

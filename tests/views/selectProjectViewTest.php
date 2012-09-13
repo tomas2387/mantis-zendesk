@@ -7,6 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+require_once "../../mantis/views/Item.php";
 require_once "../../mantis/views/selectProject.php";
 
 
@@ -35,8 +36,8 @@ class selectProjectViewTest extends PHPUnit_Framework_TestCase
 
     private function verifyRenderView($array, $expected)
     {
-        $view = new selectProjectView();
-        $actual = $view->renderView($array);
+        $view = new selectProjectView($array);
+        $actual = $view->renderView();
         $this->assertEquals($expected, $actual);
     }
 
