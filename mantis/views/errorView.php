@@ -10,7 +10,7 @@ class errorView
 {
     public function renderView()
     {
-
+        return "Error";
     }
 
 }

@@ -13,7 +13,7 @@ if( empty($_GET) ) {
     $arrayMantisProjects = $uc->getMantisProjects();
 
     $view = new selectProjectView();
-    $view->renderView($arrayMantisProjects);
+    $html = $view->renderView($arrayMantisProjects);
 }
 else if( isset($_GET['bugList']) ) {
     $uc = new userController();
@@ -24,15 +24,20 @@ else if( isset($_GET['bugList']) ) {
     $arrayMantisBugs = $bc->getMantisBugs($_GET['project']);
 
     $view = new bugListView();
-    $view->renderView($_GET['bugList'], $arrayMantisReporters, $arrayZendeskReporters, $arrayMantisBugs);
+    $html = $view->renderView($_GET['bugList'], $arrayMantisReporters, $arrayZendeskReporters, $arrayMantisBugs);
 }
 else if( isset($_GET['migrate']) ) {
     $bc = new bugsController();
     $result = $bc->bugsToZendeskTickets(intval($_GET['migrate']), $_POST);
 
     $view = new migrateView();
-    $view->renderView($result);
+    $html = $view->renderView($result);
 }
 else {
-    require_once(MANTIS2ZENDESK_ROOT.'/resources/error404.html');
+    $view = new errorView();
+    $html = $view->renderView();
 }
+
+
+$gView = new generalView();
+$gView->render(file_get_contents('resources/header.html'), $html, NULL);
