@@ -37,12 +37,12 @@ class bugListViewTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-    * method: renderView
-    * when: calledWithCorrectParameters
-    * with:
-    * should: returnCorrect
-    */
-    public function test_renderView_calledWithCorrectParameters__returnCorrect()
+     * method: renderView
+     * when: calledWithInCorrectParameters
+     * with:
+     * should: returnError
+     */
+    public function test_renderView_calledWithInCorrectParameters__returnError()
     {
         $arrayMantisReporters = array();
         $arrayZendeskReporters = array();

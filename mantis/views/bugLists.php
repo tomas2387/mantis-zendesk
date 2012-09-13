@@ -64,7 +64,7 @@ class bugListView
             $usersMapping .= '</div>';
         }
         $usersMapping .= '</div>';
-        
+
         $usersMapping .= '</div>';
 
         return $usersMapping;
