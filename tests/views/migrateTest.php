@@ -7,8 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
-require_once "../../mantis/views/Item.php";
-
+require_once "../../mantis/Item.php";
+require_once "../../mantis/views/migrate.php";
 require_once "../../mantis/model/Result.php";
 
 

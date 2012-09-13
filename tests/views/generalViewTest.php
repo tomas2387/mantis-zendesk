@@ -1,7 +1,7 @@
 <?php
 
 require_once '../../mantis/views/generalView.php';
-require_once "../../mantis/views/Item.php";
+require_once "../../mantis/Item.php";
 require_once "../../mantis/model/Result.php";
 require_once "../../mantis/views/migrate.php";
 

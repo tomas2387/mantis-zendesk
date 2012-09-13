@@ -11,7 +11,7 @@ require_once '../../mantis/views/bugLists.php';
  */
 class bugListViewTest extends PHPUnit_Framework_TestCase
 {
-    private $baseHeadHtmlExpected = '<script src="resources/js/index.js"></script><form action="index.php?migrate=1" method="POST"><div class="block"><div class="title2">Users Mapping</div>';
+    private $baseHeadHtmlExpected = '<script src="resources/js/index.js"></script><form action="index.php?migrate=1" method="POST"><div class="block"><div class="title2"><span>Users Mapping</span></div>';
     private $baseFooterHtmlExpected = '<button type="submit" id="migrate">Move all to Zendesk</button></form>';
 
     private function verify($instance,$expected) {
@@ -30,7 +30,7 @@ class bugListViewTest extends PHPUnit_Framework_TestCase
         $instance = new bugListView(1, NULL, NULL, NULL);
         $expected  = $this->baseHeadHtmlExpected;
         $expected .= '<div></div></div>';
-        $expected .= '<div class="block"><div class="title2">Bug List</div></div>';
+        $expected .= '<div class="block"><div class="title2"><span>Bug List</span></div></div>';
         $expected .= $this->baseFooterHtmlExpected;
 
         $this->verify($instance, $expected);
@@ -56,7 +56,7 @@ class bugListViewTest extends PHPUnit_Framework_TestCase
         $expected .= '</div>';
 
         $expected .= '</div>';
-        $expected .= '<div class="block"><div class="title2">Bug List</div></div>';
+        $expected .= '<div class="block"><div class="title2"><span>Bug List</span></div></div>';
         $expected .= $this->baseFooterHtmlExpected;
 
         $this->verify($instance, $expected);
