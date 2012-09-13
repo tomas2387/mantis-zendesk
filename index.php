@@ -40,4 +40,4 @@ else {
 
 
 $gView = new generalView();
-$gView->render(file_get_contents('resources/header.html'), $html, NULL);
+$gView->render(file_get_contents('resources/header.html'), $html, file_get_contents('resources/footer.html'));
