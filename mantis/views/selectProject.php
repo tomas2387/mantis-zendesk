@@ -1,8 +1,13 @@
 <?php
-class selectProjectView {
+class selectProjectView extends Item {
+    private $arrayMantisProject = array();
 
-    public function renderView($arrayMantisProject) {
-        if ($arrayMantisProject === NULL) $arrayMantisProject = array();
+    function __construct($arrayMantisProject) {
+        $this->arrayMantisProject = $arrayMantisProject;
+    }
+
+    public function renderView() {
+        if ($this->arrayMantisProject === NULL) $this->arrayMantisProject = array();
         $result = "<script src=\"resources/js/index.js\"></script>
 
         <div class=\"title\">Select the Mantis Project</div>
@@ -13,9 +18,10 @@ class selectProjectView {
 
 
         $list = "";
-        foreach ($arrayMantisProject as $project) {
+        foreach ($this->arrayMantisProject as $project) {
             $list.= "<option value = \"".$project['id']."\" >".$project['name']."</option>";
         }
+
         $result.= $list." </select><input type=\"submit\" value = \"Next\"></form><div class=\"errormessage hidden\"></div>";
         return $result;
     }

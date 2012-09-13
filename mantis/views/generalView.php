@@ -8,7 +8,29 @@
  */
 class generalView
 {
-    function render($header, $body, $footer) {
+    private $items;
 
+    public function __construct()
+    {
+        $this->items = array();
+    }
+
+    public function setItems($items)
+    {
+        $this->items = $items;
+    }
+
+    public function addItem($item)
+    {
+        array_push($items, $item);
+    }
+
+    function render() {
+        $html = "";
+        foreach ($this->items as $item)
+        {
+            $html .= $item->renderView();
+        }
+        return $html;
     }
 }

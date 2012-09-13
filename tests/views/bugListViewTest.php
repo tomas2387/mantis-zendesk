@@ -22,11 +22,12 @@ class bugListViewTest extends PHPUnit_Framework_TestCase
     */
     public function test_renderView_called__returnCorrectAnswer()
     {
-        $instance = new bugListView();
-        $expected = $instance->renderView(1, NULL, NULL, NULL);
+        $instance = new bugListView(1, NULL, NULL, NULL);
+        $expected = $instance->renderView();
         $actual = $this->baseHeadHtmlExpected.'<form action="index.php?migrate=1" method="POST"><div class="block"><div class="title2"><span>Users Mapping</span></div><div></div></div><div class="block"><div class="title2"><span>Bug List</span></div></div>'.$this->baseFooterHtmlExpected;
         $this->assertEquals($actual, $expected);
     }
+
 
 
 
