@@ -14,6 +14,10 @@ class bugListViewTest extends PHPUnit_Framework_TestCase
     private $baseHeadHtmlExpected = '<script src="resources/js/index.js"></script>';
     private $baseFooterHtmlExpected = '<button type="submit" id="migrate">Move all to Zendesk</button></form>';
 
+    private function verify() {
+        
+    }
+
     /**
     * method: renderView
     * when: called
@@ -28,7 +32,16 @@ class bugListViewTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($actual, $expected);
     }
 
+    /**
+    * method: renderView
+    * when: calledWithInCorrectParameters
+    * with:
+    * should: returnError
+    */
+    public function test_renderView_calledWithInCorrectParameters__returnError()
+    {
 
+    }
 
 
 }

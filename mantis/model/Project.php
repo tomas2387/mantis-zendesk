@@ -1,5 +1,5 @@
 <?php
-class Project extends m2zObject {
+class Project {
 
     private $id;
     private $name;
