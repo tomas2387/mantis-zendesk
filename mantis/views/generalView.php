@@ -22,13 +22,13 @@ class generalView
 
     public function addItem($item)
     {
-        array_push($items, $item);
+        if (!$item == NULL) array_push($this->items, $item);
     }
 
-    function render() {
+    function render()
+    {
         $html = "";
-        foreach ($this->items as $item)
-        {
+        foreach ($this->items as $item) {
             $html .= $item->renderView();
         }
         return $html;

@@ -1,16 +1,18 @@
 <?php
-define( 'MANTIS2ZENDESK_ROOT', '../..' );
+define('MANTIS2ZENDESK_ROOT', '../..');
 
 require_once('../../mantis/controller/userController.php');
 
-class FakeConnector {
-    function getIssuesByProjectId($projectId) {
+class FakeConnector
+{
+    function getIssuesByProjectId($projectId)
+    {
         return array(
             array(
-                    'reporter' => array(
-                        'name' => 'Pepito'
-                    )
-                ),
+                'reporter' => array(
+                    'name' => 'Pepito'
+                )
+            ),
             array(
                 'reporter' => array(
                     'name' => 'Caio'
@@ -21,9 +23,11 @@ class FakeConnector {
     }
 }
 
-class userControllerTest extends PHPUnit_Framework_TestCase{
+class userControllerTest extends PHPUnit_Framework_TestCase
+{
 
-    protected function setUp(){
+    protected function setUp()
+    {
 
     }
 
@@ -33,7 +37,8 @@ class userControllerTest extends PHPUnit_Framework_TestCase{
      * with:
      * should: return NULL
      */
-    public function test_getMantisReporters_withEmptyProjectId(){
+    public function test_getMantisReporters_withEmptyProjectId()
+    {
         $fc = new FakeConnector();
         $usercontroller = new userController($fc);
         $this->assertEquals($usercontroller->getMantisReporters(NULL), NULL);

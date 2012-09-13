@@ -18,6 +18,6 @@ class mantisWrapperTest extends PHPUnit_Framework_TestCase
     public function test_getProjectIdFromName_withEmptyProjectName()
     {
         $mantisWrapper = new mantisWrapper();
-        $this->assertEquals($mantisWrapper->getProjectIdFromName(NULL),NULL);
+        $this->assertEquals($mantisWrapper->getProjectIdFromName(NULL), NULL);
     }
 }

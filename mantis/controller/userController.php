@@ -2,14 +2,15 @@
 
 require_once(MANTIS2ZENDESK_ROOT . '/mantis/data/connector.php');
 
-class userController {
+class userController
+{
     private $cm;
 
-    public function __construct($connector=NULL) {
-        if(empty($connector)) {
+    public function __construct($connector = NULL)
+    {
+        if (empty($connector)) {
             $this->cm = new connector();
-        }
-        else $this->cm = $connector;
+        } else $this->cm = $connector;
     }
 
     public function getMantisReporters($projectId)
@@ -30,8 +31,8 @@ class userController {
 
         $userObjects = $this->cm->getZendeskReporters();
 
-        foreach($userObjects->users as $user) {
-            if( ! empty($user->email)) {
+        foreach ($userObjects->users as $user) {
+            if (!empty($user->email)) {
                 $arrayResult[] = $user;
             }
         }

@@ -1,12 +1,15 @@
 <?php
-class selectProjectView extends Item {
+class selectProjectView extends Item
+{
     private $arrayMantisProject = array();
 
-    function __construct($arrayMantisProject) {
+    function __construct($arrayMantisProject)
+    {
         $this->arrayMantisProject = $arrayMantisProject;
     }
 
-    public function renderView() {
+    public function renderView()
+    {
         if ($this->arrayMantisProject === NULL) $this->arrayMantisProject = array();
         $result = "<script src=\"resources/js/index.js\"></script>
 
@@ -19,10 +22,10 @@ class selectProjectView extends Item {
 
         $list = "";
         foreach ($this->arrayMantisProject as $project) {
-            $list.= "<option value = \"".$project['id']."\" >".$project['name']."</option>";
+            $list .= "<option value = \"" . $project['id'] . "\" >" . $project['name'] . "</option>";
         }
 
-        $result.= $list." </select><input type=\"submit\" value = \"Next\"></form><div class=\"errormessage hidden\"></div>";
+        $result .= $list . " </select><input type=\"submit\" value = \"Next\"></form><div class=\"errormessage hidden\"></div>";
         return $result;
     }
 }

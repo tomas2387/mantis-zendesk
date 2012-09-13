@@ -42,7 +42,8 @@
  *
  */
 
-class Bug {
+class Bug
+{
     private $id;
     private $category;
     private $priority;

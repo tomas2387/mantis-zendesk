@@ -24,7 +24,6 @@ class selectProjectViewTest extends PHPUnit_Framework_TestCase
             <input type="hidden" name="bugList" value="">';
 
 
-
     private function pushProject($array, $id, $name)
     {
         $project['id'] = $id;
@@ -43,37 +42,34 @@ class selectProjectViewTest extends PHPUnit_Framework_TestCase
 
 
     /**
-    * dataProvider getTestData */
-    public function getTestData (){
+     * dataProvider getTestData */
+    public function getTestData()
+    {
         $array = array();
         $array = $this->pushProject($array, "1", "a bug");
         $array = $this->pushProject($array, "2", "another bug");
         return array(
-            array($array,  $this->baseHtmlExpected.
+            array($array, $this->baseHtmlExpected .
                 '<select name="project"> <option value = "1" >a bug</option><option value = "2" >another bug</option> </select><input type="submit" value = "Next"></form><div class="errormessage hidden"></div>'),
-            array(array(), $this->baseHtmlExpected.
+            array(array(), $this->baseHtmlExpected .
                 '<select name="project">  </select><input type="submit" value = "Next"></form><div class="errormessage hidden"></div>'),
-            array(NULL, $this->baseHtmlExpected.
+            array(NULL, $this->baseHtmlExpected .
                 '<select name="project">  </select><input type="submit" value = "Next"></form><div class="errormessage hidden"></div>'),
         );
     }
 
 
     /**
-    * method: renderView
-    * when: called
-    * with:
-    * should: correctAnswer
+     * method: renderView
+     * when: called
+     * with:
+     * should: correctAnswer
      * @dataProvider getTestData
-    */
+     */
     public function test_renderView_called__correctAnswer($array, $expected)
     {
         $this->verifyRenderView($array, $expected);
     }
-
-
-
-
 
 
 }

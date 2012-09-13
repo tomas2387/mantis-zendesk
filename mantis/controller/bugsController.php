@@ -5,7 +5,9 @@ include (MANTIS2ZENDESK_ROOT . '/mantis/controller/userController.php');
 class bugsController
 {
     private $cm;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->cm = new connector();
     }
 
@@ -14,7 +16,8 @@ class bugsController
         return $this->cm->getIssuesByProjectId($projectId);
     }
 
-    public function bugsToZendeskTickets($projectId, $userMap) {
+    public function bugsToZendeskTickets($projectId, $userMap)
+    {
         $mantisBugs = $this->getMantisBugs($projectId);
 
         $ZendeskTicketsObjects = array();
@@ -50,35 +53,34 @@ class bugsController
      *                          ...
      *                     }
      */
-    private function parseOneBug($mantisBug, $zendeskUser) {
-            $arrZD = array(
-                "z_subject" => $mantisBug["summary"],
-                "z_description" => $mantisBug["description"],
-                "z_recipient" => "support@zendesk.com",
-                "z_name" => $zendeskUser->name,
-                "z_requester" => $zendeskUser->email
-            );
+    private function parseOneBug($mantisBug, $zendeskUser)
+    {
+        $arrZD = array(
+            "z_subject" => $mantisBug["summary"],
+            "z_description" => $mantisBug["description"],
+            "z_recipient" => "support@zendesk.com",
+            "z_name" => $zendeskUser->name,
+            "z_requester" => $zendeskUser->email
+        );
 
-            if (isset($mantisBug["steps_to_reproduce"]))
-            {
-                $arrZD["z_description"] = $arrZD["z_description"] ."\n steps to reproduce--> \n". $mantisBug["steps_to_reproduce"];
-            }
+        if (isset($mantisBug["steps_to_reproduce"])) {
+            $arrZD["z_description"] = $arrZD["z_description"] . "\n steps to reproduce--> \n" . $mantisBug["steps_to_reproduce"];
+        }
 
-            if (isset($mantisArr["additional_information"]))
-            {
-                $arrZD["z_description"] = $arrZD["z_description"] ."\n additional information--> \n". $mantisBug["additional_information"];
-            }
+        if (isset($mantisArr["additional_information"])) {
+            $arrZD["z_description"] = $arrZD["z_description"] . "\n additional information--> \n" . $mantisBug["additional_information"];
+        }
 
-            return array(
-                        'ticket' => array(
-                            'subject' => $arrZD['z_subject'],
-                            'description' => $arrZD['z_description'],
-                            'requester' => array(
-                                'name' => $arrZD['z_name'],
-                                'email' => $arrZD['z_requester']
-                            )
-                        )
-                    );
+        return array(
+            'ticket' => array(
+                'subject' => $arrZD['z_subject'],
+                'description' => $arrZD['z_description'],
+                'requester' => array(
+                    'name' => $arrZD['z_name'],
+                    'email' => $arrZD['z_requester']
+                )
+            )
+        );
     }
 
 

@@ -1,14 +1,14 @@
-$(document).ready(function() {
-    $('.errormessage').live('click', function(e) {
-        if(!$(this).hasClass('hidden')) {
+$(document).ready(function () {
+    $('.errormessage').live('click', function (e) {
+        if (!$(this).hasClass('hidden')) {
             $(this).fadeOut('slow');
         }
     });
 
-    $('.bug').live('click', function(e) {
+    $('.bug').live('click', function (e) {
         var masdatos = $(this).children('.masdatos');
-        if(masdatos) {
-            if(masdatos.hasClass('hidden')) {
+        if (masdatos) {
+            if (masdatos.hasClass('hidden')) {
                 masdatos.slideDown();
                 masdatos.removeClass('hidden');
             }
@@ -20,7 +20,7 @@ $(document).ready(function() {
     });
 
 
-    $('#migrate').live('submit', function(e) {
+    $('#migrate').live('submit', function (e) {
 
     });
 });

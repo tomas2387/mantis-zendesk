@@ -8,7 +8,8 @@ body {
 }
 
 .version {
-    color: gray; font-size: 9px;
+    color: gray;
+    font-size: 9px;
 }
 
 .version .famfam {
@@ -32,9 +33,9 @@ body {
 }
 
 .container {
-    background-color:#ffffff;
-    text-align:left;
-    overflow:hidden;
+    background-color: #ffffff;
+    text-align: left;
+    overflow: hidden;
     padding: 3%;
 
     -webkit-border-radius: 10px;
@@ -43,7 +44,7 @@ body {
 
     border: 1px solid #aaa;
 
-    font-size:14px;
+    font-size: 14px;
     color: #333;
 
     -moz-box-shadow: 0 2px 4px 1px #aaa;
@@ -73,12 +74,19 @@ body {
     color: red;
     font-size: 50px;
     text-shadow: 0 0 2px rgb(85, 85, 85);
-    display: block; -moz-transform: rotate(-27deg);
-    position: relative; height: 0; width: 0; left: 162px; top: -53px;
+    display: block;
+    -moz-transform: rotate(-27deg);
+    position: relative;
+    height: 0;
+    width: 0;
+    left: 162px;
+    top: -53px;
 }
 
 .zendesk-logo-text {
-    position: relative; top: -50px; left: 200px;
+    position: relative;
+    top: -50px;
+    left: 200px;
 }
 
 .form {
@@ -87,18 +95,18 @@ body {
 }
 
 .hidden {
-    display:none;
+    display: none;
 }
 
 .errormessage {
-    cursor:pointer;
+    cursor: pointer;
     background: #FFE7E7 url('../images/icons/cancel.png') no-repeat 15px 50%;
     text-align: left;
     padding: 5px 5px 5px 45px;
     border: 2px solid #E77D7B;
-    overflow:auto;
-    font-size:1.0em;
-    font-family:Verdana;
+    overflow: auto;
+    font-size: 1.0em;
+    font-family: Verdana;
     width: 60%;
     text-align: center;
     margin: 0 auto;
@@ -110,16 +118,16 @@ body {
 }
 
 .bug {
-    cursor:pointer;
+    cursor: pointer;
     background: #BDE5F8 url('../images/icons/bug.png') no-repeat 15px 50%;
     text-align: left;
     padding: 5px 5px 5px 45px;
-    border:2px solid #92AE00;
-    overflow:auto;
-    font-size:1.0em;
-    font-family:Verdana;
+    border: 2px solid #92AE00;
+    overflow: auto;
+    font-size: 1.0em;
+    font-family: Verdana;
     width: 94%;
-    color:#00529B;
+    color: #00529B;
     margin-top: 1px;
 }
 
