@@ -1,6 +1,6 @@
 <?php
-
-
+require_once __DIR__ . '/../../settings.php';
+require_once __DIR__ . '/../../resources/library/nusoap/nusoap.php';
 
 class mantisWrapper
 {

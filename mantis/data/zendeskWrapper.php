@@ -1,5 +1,5 @@
 <?php
-require_once(MANTIS2ZENDESK_ROOT . '/settings.php');
+require_once __DIR__ . '/../../settings.php';
 
 class zendeskWrapper
 {

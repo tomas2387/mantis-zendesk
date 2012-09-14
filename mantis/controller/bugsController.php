@@ -1,14 +1,19 @@
 <?php
-include (MANTIS2ZENDESK_ROOT . '/mantis/data/connector.php');
-include (MANTIS2ZENDESK_ROOT . '/mantis/controller/userController.php');
+require_once __DIR__ . '/../data/connector.php';
+require_once __DIR__ . '/userController.php';
 
 class bugsController
 {
     private $cm;
 
-    public function __construct()
+    public function __construct($cm)
     {
-        $this->cm = new connector();
+        if( isset($cm)) {
+            $this->cm = $cm;
+        }
+        else {
+            $this->cm = new connector();
+        }
     }
 
     public function getMantisBugs($projectId)
