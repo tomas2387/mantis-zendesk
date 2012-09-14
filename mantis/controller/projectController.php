@@ -1,6 +1,6 @@
 <?php
 
-require_once(MANTIS2ZENDESK_ROOT . '/mantis/data/connector.php');
+require_once __DIR__ . '/../data/connector.php';
 
 class projectController
 {

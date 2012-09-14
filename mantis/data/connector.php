@@ -1,6 +1,6 @@
 <?php
-require_once('mantisWrapper.php');
-require_once('zendeskWrapper.php');
+require_once __DIR__ . '/mantisWrapper.php';
+require_once __DIR__ . '/zendeskWrapper.php';
 
 class connector
 {
@@ -15,7 +15,7 @@ class connector
 
     public function getIssues($projectName)
     {
-        $projectID = $this->mw->getProjectIdFromName($_GET['projectName']);
+        $projectID = $this->mw->getProjectIdFromName($projectName);
         if (!isset($projectID) || empty($projectID)) return json_encode(array('error' => "That project doesn't exists!"));
 
         return $this->mw->getProjectIssues($projectID);

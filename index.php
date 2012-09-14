@@ -1,10 +1,17 @@
 <?php
-define('__ROOT__', dirname(dirname(__FILE__)));
-define('MANTIS2ZENDESK_ROOT', __ROOT__ . '/mantis-zendesk');
+require_once __DIR__ . '/mantis/controller/projectController.php';
+require_once __DIR__ . '/mantis/controller/userController.php';
+require_once __DIR__ . '/mantis/controller/bugsController.php';
 
-require_once(MANTIS2ZENDESK_ROOT . '/mantis/controller/projectController.php');
-require_once(MANTIS2ZENDESK_ROOT . '/mantis/controller/userController.php');
-require_once(MANTIS2ZENDESK_ROOT . '/mantis/controller/bugsController.php');
+require_once __DIR__ . '/mantis/views/selectProject.php';
+require_once __DIR__ . '/mantis/views/bugLists.php';
+require_once __DIR__ . '/mantis/views/migrate.php';
+require_once __DIR__ . '/mantis/views/errorView.php';
+require_once __DIR__ . '/mantis/views/generalView.php';
+
+
+require_once __DIR__ . '/resources/header.php';
+require_once __DIR__ . '/resources/footer.php';
 
 if (empty($_GET)) {
     $uc = new projectController();

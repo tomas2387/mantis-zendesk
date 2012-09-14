@@ -10,7 +10,7 @@ class bugsController
 {
     private $cm;
 
-    public function __construct($cm)
+    public function __construct($cm = null)
     {
         if( isset($cm)) {
             $this->cm = $cm;
