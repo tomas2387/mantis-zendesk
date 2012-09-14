@@ -1,53 +1,6 @@
 <?php
-<<<<<<< HEAD
-/**
- * Created by JetBrains PhpStorm.
- * User: tomasprado
- * Date: 8/1/12
- * Time: 5:46 PM
- * "id":1,
- * "view_state":{"id":10,"name":"public"},
- * "last_updated":"2012-07-26T11:54:54+02:00",
- * "project":{"id":1,"name":"ProjectTest"},
- * "category":"OsoPanda",
- * "priority":{"id":30,"name":"normal"},
- * "severity":{"id":50,"name":"minor"},
- * "status":{"id":10,"name":"new"},
- * "reporter":{"id":1,"name":"administrator","email":"root@localhost"},
- * "summary":"No puedo caminar",
- * "platform":"Opera","os":"WindowsXP",
- * "os_build":"7",
- * "reproducibility":{"id":10,"name":"always"},
- * "date_submitted":"2012-07-26T11:54:54+02:00",
- * "sponsorship_total":0,
- * "projection":{"id":10,"name":"none"},
- * "eta":{"id":10,"name":"none"},
- * "resolution":{"id":10,"name":"open"},
- * "description":"Me he quedado invalido de repente",
- * "steps_to_reproduce":"1. Romperse las piernas\n2. Intentar caminar \n3. No se puede.\n4. FIN",
- * "additional_information":"Puedo estar asi por un tiempo, pero se me hace dificil ",
- * "attachments":
- * [
- * {
- * "id":1,
- * "filename":"bug1028.png",
- * "size":82547,
- * "content_type":"image\/png",
- * "date_submitted":"2012-07-26T11:54:54+02:00",
- * "download_url":"http:\/\/localhost\/mantis\/mantisbt\/file_download.php?file_id=1&type=bug",
- * "user_id":1
- * }
- * ],
- * "sticky":false,"tags":[]}]
- *
- *
- */
 
-class Bug
-{
-=======
 class Bug extends Item {
->>>>>>> 60f310fbeb242cc399ad1baaa424198d5b198ac1
     private $id;
     private $category;
     private $priority;

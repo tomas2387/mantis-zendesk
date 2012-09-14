@@ -1,17 +1,10 @@
 <?php
 
-require_once '../../mantis/views/generalView.php';
-require_once "../../mantis/Item.php";
-require_once "../../mantis/model/Result.php";
-require_once "../../mantis/views/migrate.php";
+require_once dirname(__FILE__) . '/../../mantis/views/generalView.php';
+require_once dirname(__FILE__) . '/../../mantis/Item.php';
+require_once dirname(__FILE__) . '/../../mantis/model/Result.php';
+require_once dirname(__FILE__) . '/../../mantis/views/migrate.php';
 
-/**
- * Created by JetBrains PhpStorm.
- * User: eyeos
- * Date: 13/09/12
- * Time: 11:14
- * To change this template use File | Settings | File Templates.
- */
 class gereralViewTest extends PHPUnit_Framework_TestCase
 {
 

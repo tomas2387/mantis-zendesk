@@ -1,7 +1,5 @@
 <?php
-define('MANTIS2ZENDESK_ROOT', '../..');
-
-include ('../../mantis/controller/bugsController.php');
+require_once dirname(__FILE__) . '/mantis/controller/bugsController.php';
 
 class FakeConnector
 {
@@ -40,7 +38,7 @@ class bugsControllerTest extends PHPUnit_Framework_TestCase
     public function test_getMantisReporters_withEmptyProjectId()
     {
         $fc = new FakeConnector();
-        $usercontroller = new userController($fc);
+        $bugsController = new bugsController($fc);
         $this->assertEquals($usercontroller->getMantisReporters(NULL), NULL);
     }
 }

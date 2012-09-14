@@ -1,23 +1,23 @@
 <?php
 
-require_once '../../mantis/views/bugLists.php';
+require_once dirname(__FILE__) . '/../../mantis/views/bugLists.php';
 
-/**
- * Created by JetBrains PhpStorm.
- * User: eyeos
- * Date: 10/09/12
- * Time: 9:56
- * To change this template use File | Settings | File Templates.
- */
 class bugListViewTest extends PHPUnit_Framework_TestCase
 {
     private $baseHeadHtmlExpected = '<script src="resources/js/index.js"></script><form action="index.php?migrate=1" method="POST"><div class="block"><div class="title2"><span>Users Mapping</span></div>';
     private $baseFooterHtmlExpected = '<button type="submit" id="migrate">Move all to Zendesk</button></form>';
 
+    private $bugListView;
+
     private function verify($instance,$expected) {
         $actual = $instance->renderView();
         $this->assertEquals($actual, $expected);
     }
+
+    public function setUp() {
+        $this->bugListView = new bugListView();
+    }
+
 
     /**
     * method: renderView
@@ -27,13 +27,13 @@ class bugListViewTest extends PHPUnit_Framework_TestCase
     */
     public function test_renderView_calledWithNULLS__returnCorrectAnswer()
     {
-        $instance = new bugListView(1, NULL, NULL, NULL);
+        $this->bugListView->setProjectId(1);
         $expected  = $this->baseHeadHtmlExpected;
         $expected .= '<div></div></div>';
         $expected .= '<div class="block"><div class="title2"><span>Bug List</span></div></div>';
         $expected .= $this->baseFooterHtmlExpected;
 
-        $this->verify($instance, $expected);
+        $this->verify($this->bugListView, $expected);
     }
 
     /**
@@ -42,13 +42,16 @@ class bugListViewTest extends PHPUnit_Framework_TestCase
      * with:
      * should: returnError
      */
-    public function test_renderView_calledWithInCorrectParameters__returnError()
-    {
+    public function test_renderView_calledWithInCorrectParameters__returnError() {
         $arrayMantisReporters = array();
         $arrayZendeskReporters = array();
         $arrayMantisBugs = array();
 
-        $instance = new bugListView(1, $arrayMantisReporters, $arrayZendeskReporters, $arrayMantisBugs);
+        $this->bugListView->setProjectId(1);
+        $this->bugListView->setArrayMantisReporters($arrayMantisReporters);
+        $this->bugListView->setArrayZendeskReporters($arrayZendeskReporters);
+        $this->bugListView->setArrayMantisBugs($arrayMantisBugs);
+
         $expected  = $this->baseHeadHtmlExpected;
 
         $expected .= '<div>';
@@ -59,6 +62,6 @@ class bugListViewTest extends PHPUnit_Framework_TestCase
         $expected .= '<div class="block"><div class="title2"><span>Bug List</span></div></div>';
         $expected .= $this->baseFooterHtmlExpected;
 
-        $this->verify($instance, $expected);
+        $this->verify($this->bugListView, $expected);
     }
 }

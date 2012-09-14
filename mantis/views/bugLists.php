@@ -1,19 +1,10 @@
 <?php
 
-class bugListView
-{
+class bugListView {
     private $projectId;
     private $arrayMantisReporters;
     private $arrayZendeskReporters;
     private $arrayMantisBugs;
-
-    function __construct($projectId, $arrayMantisReporters, $arrayZendeskReporters, $arrayMantisBugs)
-    {
-        $this->projectId = $projectId;
-        $this->arrayMantisReporters = $arrayMantisReporters;
-        $this->arrayZendeskReporters = $arrayZendeskReporters;
-        $this->arrayMantisBugs = $arrayMantisBugs;
-    }
 
     function renderView()
     {
@@ -51,5 +42,25 @@ class bugListView
         $result .= $usersMapping . $bugList . '<button type="submit" id="migrate">Move all to Zendesk</button></form>';
 
         return $result;
+    }
+
+    public function setArrayMantisBugs($arrayMantisBugs)
+    {
+        $this->arrayMantisBugs = $arrayMantisBugs;
+    }
+
+    public function setArrayMantisReporters($arrayMantisReporters)
+    {
+        $this->arrayMantisReporters = $arrayMantisReporters;
+    }
+
+    public function setArrayZendeskReporters($arrayZendeskReporters)
+    {
+        $this->arrayZendeskReporters = $arrayZendeskReporters;
+    }
+
+    public function setProjectId($projectId)
+    {
+        $this->projectId = $projectId;
     }
 }
