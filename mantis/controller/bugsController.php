@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__ . '/../data/connector.php';
+
 require_once __DIR__ . '/userController.php';
+
+require_once __DIR__ . '/../model/Bug.php';
+require_once __DIR__ . '/../model/Reporter.php';
 
 class bugsController
 {
@@ -18,7 +22,23 @@ class bugsController
 
     public function getMantisBugs($projectId)
     {
-        return $this->cm->getIssuesByProjectId($projectId);
+        $result = array();
+
+        $ArrayMantisBugs = $this->cm->getIssuesByProjectId($projectId);
+        foreach($ArrayMantisBugs as $entryBug) {
+            $bug = new Bug();
+            $bug->setId($entryBug['id']);
+            $bug->setSummary($entryBug['summary']);
+            $bug->setDescription($entryBug['description']);
+
+            $reporter = new Reporter();
+            $reporter->setName($entryBug['reporter']['name']);
+            $bug->setReporter($reporter);
+
+            $result[] = $bug;
+        }
+
+        return $result;
     }
 
     public function bugsToZendeskTickets($projectId, $userMap)

@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../Item.php';
+
 class Bug extends Item {
     private $id;
     private $category;
