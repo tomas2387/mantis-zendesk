@@ -44,7 +44,7 @@ class bugsControllerTest extends PHPUnit_Framework_TestCase
             'Caio');
         $expected = array($bug1, $bug2);
 
-        $fc = new FakeConnector();
+        $fc = new FakeConector();
         $bugsController = new bugsController($fc);
         $this->assertEquals($bugsController->getMantisBugs(NULL), $expected);
     }
@@ -56,7 +56,7 @@ class bugsControllerTest extends PHPUnit_Framework_TestCase
     * should: ReturnEmptyArray
     */
     public function test_getMantisBugs_CalledWithNullParameters__ReturnEmptyArray() {
-        $fc = new FakeConnector(array());
+        $fc = new FakeConector(array());
         $bugsController = new bugsController($fc);
         $this->assertEquals($bugsController->getMantisBugs(NULL), array());
     }

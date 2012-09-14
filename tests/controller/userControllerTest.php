@@ -5,12 +5,6 @@ require_once __DIR__ . '/FakeConector.php';
 
 class userControllerTest extends PHPUnit_Framework_TestCase
 {
-
-    protected function setUp()
-    {
-
-    }
-
     /**
      * method: test_getMantisReporters_withEmptyProjectId
      * when:
@@ -27,7 +21,7 @@ class userControllerTest extends PHPUnit_Framework_TestCase
 
         $expected = array($reporter1, $reporter2);
 
-        $fc = new FakeConnector();
+        $fc = new FakeConector();
         $usercontroller = new userController($fc);
         $this->assertEquals($usercontroller->getMantisReporters(NULL), $expected);
     }
