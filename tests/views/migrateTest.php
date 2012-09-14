@@ -1,7 +1,7 @@
 <?php
-require_once dirname(__FILE__) . "/../../mantis/Item.php";
-require_once dirname(__FILE__) . "/../../mantis/views/migrate.php";
-require_once dirname(__FILE__) . "/../../mantis/model/Result.php";
+require_once __DIR__ . "/../../mantis/Item.php";
+require_once __DIR__ . "/../../mantis/views/migrate.php";
+require_once __DIR__ . "/../../mantis/model/Result.php";
 
 
 class migrateTest extends PHPUnit_Framework_TestCase

@@ -1,7 +1,7 @@
 <?php
-require_once dirname(__FILE__) . "/../../mantis/Item.php";
-require_once dirname(__FILE__) . "/../../mantis/model/Bug.php";
-require_once dirname(__FILE__) . "/../../mantis/model/Reporter.php";
+require_once __DIR__ . "/../../mantis/Item.php";
+require_once __DIR__ . "/../../mantis/model/Bug.php";
+require_once __DIR__ . "/../../mantis/model/Reporter.php";
 
 class BugTest extends PHPUnit_Framework_TestCase
 {

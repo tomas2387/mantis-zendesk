@@ -6,7 +6,7 @@
  * Time: 15:56
  * To change this template use File | Settings | File Templates.
  */
-require_once ('../../mantis/data/mantisWrapper.php');
+require_once __DIR__ . '/../../mantis/data/mantisWrapper.php';
 
 class mantisWrapperTest extends PHPUnit_Framework_TestCase
 {

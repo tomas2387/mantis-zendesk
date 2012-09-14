@@ -1,14 +1,6 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: tomasprado
- * Date: 8/2/12
- * Time: 10:13 AM
- * To change this template use File | Settings | File Templates.
- */
 require_once __DIR__ . '/../../settings.php';
 require_once __DIR__ . '/../../resources/library/nusoap/nusoap.php';
-
 
 class mantisWrapper
 {
