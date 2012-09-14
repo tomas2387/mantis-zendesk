@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . '/../../mantis/controller/userController.php';
+require_once __DIR__ . '/../../mantis/controller/userController.php';
 
 class FakeConnector
 {

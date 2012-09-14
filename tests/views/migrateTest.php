@@ -52,26 +52,6 @@ class migrateTest extends PHPUnit_Framework_TestCase
 
     /**
      * method: renderView
-     * when: idfrom2to1000000
-     * with:
-     * should: returnError
-     */
-    /*
-    public function test_renderView_idfrom2to1000000__returnError(){
-
-        $result = new Result();
-
-        for ($i = 2; $i < 1000000; $i++) {
-        $result->id = $i;
-
-        $shouldResult = '<div class="title">Done</div><div>There was an error</div><div>'.$result->text.'</div>';
-
-        $this->verifyRenderView($result,$shouldResult);
-        }
-    }*/
-
-    /**
-     * method: renderView
      * when: idNull
      * with:
      * should: returnError

@@ -1,5 +1,6 @@
 <?php
-require_once dirname( __FILE__ ) . '/../data/connector.php';
+require_once __DIR__ . '/../data/connector.php';
+require_once __DIR__ . '/../model/Reporter.php';
 
 class userController
 {
@@ -17,7 +18,9 @@ class userController
         $arrayReporters = array();
         $arrayIssues = $this->cm->getIssuesByProjectId($projectId);
         foreach ($arrayIssues as $issue) {
-            $arrayReporters[] = $issue['reporter']['name'];
+            $reporter = new Reporter();
+            $reporter->setName($issue['reporter']['name']);
+            $arrayReporters[] = $reporter;
         }
         $arrayReporters = array_unique($arrayReporters);
 
