@@ -1,25 +1,7 @@
 <?php
 require_once __DIR__ . '/../../mantis/controller/userController.php';
+require_once __DIR__ . '/FakeConector.php';
 
-class FakeConnector
-{
-    function getIssuesByProjectId($projectId)
-    {
-        return array(
-            array(
-                'reporter' => array(
-                    'name' => 'Pepito'
-                )
-            ),
-            array(
-                'reporter' => array(
-                    'name' => 'Caio'
-                )
-            )
-
-        );
-    }
-}
 
 class userControllerTest extends PHPUnit_Framework_TestCase
 {
