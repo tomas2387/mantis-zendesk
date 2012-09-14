@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../mantis/views/bugLists.php';
+require_once __DIR__ . '/../../mantis/views/bugLists.php';
 
 class bugListViewTest extends PHPUnit_Framework_TestCase
 {

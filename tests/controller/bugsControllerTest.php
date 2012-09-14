@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . '/mantis/controller/bugsController.php';
+require_once dirname(__FILE__) . '/../../mantis/controller/bugsController.php';
 
 class FakeConnector
 {
@@ -30,15 +30,15 @@ class bugsControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * method: test_getMantisReporters_withEmptyProjectId
+     * method: test_getIssuesByProjectId_withEmptyProjectId
      * when:
      * with:
      * should: return NULL
      */
-    public function test_getMantisReporters_withEmptyProjectId()
+    public function test_getIssuesByProjectId_withEmptyProjectId()
     {
         $fc = new FakeConnector();
         $bugsController = new bugsController($fc);
-        $this->assertEquals($usercontroller->getMantisReporters(NULL), NULL);
+        $this->assertEquals($bugsController->getMantisBugs(NULL), NULL);
     }
 }
