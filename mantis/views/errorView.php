@@ -8,9 +8,16 @@
  */
 class errorView extends Item
 {
+
+    private $errorText;
+
     public function renderView()
     {
-        return "Error";
+        return "<h1>Error</h1>".$this->errorText;
+    }
+
+    public function setErrorText($error) {
+        $this->errorText = $error;
     }
 
 }
