@@ -2,6 +2,37 @@
 
 require_once __DIR__ . '/../../mantis/data/mantisWrapper.php';
 
+class fakesoapclient {
+    public function call($what, $parametersArray) {
+        switch($what) {
+            case 'mc_project_get_id_from_name':
+                if(!isset($parametersArray['username'])) {
+                    return array();
+                }
+                else if(!isset($parametersArray['password'])) {
+                    return array();
+                }
+                else if(!isset($parametersArray['project_name'])) {
+                    return array();
+                }
+
+
+            break;
+            case 'mc_project_get_issues':
+
+            break;
+            case 'mc_projects_get_user_accessible':
+
+            break;
+            default:
+
+            break;
+        }
+
+    }
+}
+
+
 class mantisWrapperTest extends PHPUnit_Framework_TestCase
 {
     protected function setUp()
@@ -11,7 +42,7 @@ class mantisWrapperTest extends PHPUnit_Framework_TestCase
 
     public function test_getProjectIdFromName_withEmptyProjectName()
     {
-        $mantisWrapper = new mantisWrapper();
-        $this->assertEquals($mantisWrapper->getProjectIdFromName(NULL), NULL);
+        $mantisWrapper = new mantisWrapper(new fakesoapclient());
+        $this->assertEquals($mantisWrapper->getProjectIdFromName(NULL), array());
     }
 }
