@@ -4,21 +4,30 @@ require_once __DIR__ . '/../../resources/library/nusoap/nusoap.php';
 
 class mantisWrapper
 {
-    private $soapclient;
+    private $soapClient;
 
-    public function __construct()
+    public function __construct($soap = null)
     {
-        $this->soapclient = new nusoap_client(ENDPOINT);
+        if( empty($soap)) {
+            $this->soapClient = new nusoap_client(ENDPOINT);
+        }
+        else {
+            $this->soapClient = $soap;
+        }
     }
 
     public function getVersion()
     {
-        return $this->soapclient->call('mc_version', array());
+        return $this->soapClient->call('mc_version', array());
+    }
+
+    private function checkCurl() {
+        return function_exists("curl_init");
     }
 
     public function getProjectIdFromName($projectName)
     {
-        return $this->soapclient->call('mc_project_get_id_from_name',
+        return $this->soapClient->call('mc_project_get_id_from_name',
             array(
                 'username' => MANTIS_USERNAME,
                 'password' => MANTIS_PASSWORD,
@@ -28,7 +37,7 @@ class mantisWrapper
 
     public function getProjectIssues($projectId, $pageNumber = '', $perPage = '')
     {
-        return $this->soapclient->call('mc_project_get_issues',
+        return $this->soapClient->call('mc_project_get_issues',
             array(
                 'username' => MANTIS_USERNAME,
                 'password' => MANTIS_PASSWORD,
@@ -40,7 +49,7 @@ class mantisWrapper
 
     public function getProjects()
     {
-        return $this->soapclient->call('mc_projects_get_user_accessible',
+        return $this->soapClient->call('mc_projects_get_user_accessible',
             array(
                 'username' => MANTIS_USERNAME,
                 'password' => MANTIS_PASSWORD
