@@ -18,7 +18,7 @@ AGPL-3.0
 INSTALLATION
 ============
 
-CURL INSTALLATION
+curl installation
 =================
 
 Execute sudo apt-get install php5-curl
