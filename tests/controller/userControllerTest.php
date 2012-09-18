@@ -25,5 +25,30 @@ class userControllerTest extends PHPUnit_Framework_TestCase
         $usercontroller = new userController($fc);
         $this->assertEquals($usercontroller->getMantisReporters(NULL), $expected);
     }
-    
+
+    /**
+    * method: getZendeskReporters
+    * when: xx
+    * with:
+    * should: returnArrayUsersWithEmail
+    */
+    public function test_getZendeskReporters_xx__returnArrayUsersWithEmail(){
+        $fc = new FakeConector();
+        $expected = $fc->getZendeskReporters();
+        $userController = new userController();
+        $this->assertEquals($userController->getZendeskReporters(), $expected);
+    }
+
+    /**
+    * method: getThisZendeskReporter
+    * when: userZendeskIdIsNULL
+    * with:
+    * should:
+    */
+    /*public function test_getThisZendeskReporter___(){
+        $fc = new FakeConector();
+        $expected = $fc->getThisZendeskReporter();
+        $userController = new userController($fc);
+        $this->assertEquals($userController->getThisZendeskReporter(NULL), $expected);
+    }*/
 }

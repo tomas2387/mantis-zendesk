@@ -61,7 +61,7 @@ class FakeConector
     }
 
     function  getZendeskReporters(){
-
+        return array();
     }
 
     function getThisZendeskReporter(){
