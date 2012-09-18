@@ -56,7 +56,7 @@ class zendeskWrapper
         if (empty($userZendeskId) || !isset($userZendeskId)) {
             return NULL;
         }
-        return $this->curlWrap('/users/' . $userZendeskId . '.json', NULL, "GET"); //https://eyeos.zendesk.com/api/v2/users/225430796.json
+        return $this->curlWrap('/users/' . $userZendeskId . '.json', NULL, "GET");
     }
 
     public function createTickets($ZendeskTicketsObjects)

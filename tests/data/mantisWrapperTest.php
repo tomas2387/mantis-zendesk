@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: root
- * Date: 12/09/12
- * Time: 15:56
- * To change this template use File | Settings | File Templates.
- */
+
 require_once __DIR__ . '/../../mantis/data/mantisWrapper.php';
 
 class fakesoapclient {
