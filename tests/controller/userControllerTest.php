@@ -6,8 +6,8 @@ require_once __DIR__ . '/FakeConector.php';
 class userControllerTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * method: test_getMantisReporters_withEmptyProjectId
-     * when:
+     * method: getMantisReporters
+     * when: EmptyProjectId
      * with:
      * should: returnEmptyArray
      */
@@ -25,4 +25,5 @@ class userControllerTest extends PHPUnit_Framework_TestCase
         $usercontroller = new userController($fc);
         $this->assertEquals($usercontroller->getMantisReporters(NULL), $expected);
     }
+    
 }
