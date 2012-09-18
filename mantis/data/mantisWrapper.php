@@ -5,7 +5,6 @@ require_once __DIR__ . '/../../resources/library/nusoap/nusoap.php';
 class mantisWrapper
 {
     private $soapClient;
-
     public function __construct($soap = null)
     {
         if( empty($soap)) {
@@ -19,10 +18,6 @@ class mantisWrapper
     public function getVersion()
     {
         return $this->soapClient->call('mc_version', array());
-    }
-
-    private function checkCurl() {
-        return function_exists("curl_init");
     }
 
     public function getProjectIdFromName($projectName)
@@ -56,5 +51,4 @@ class mantisWrapper
             )
         );
     }
-
 }

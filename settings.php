@@ -1,6 +1,4 @@
 <?php
-define('NUSOAP', '/var/www/mantis-zendesk/resources/library/nusoap/nusoap.php');
-
 /* Mantis credentials */
 define('ENDPOINT', 'http://localhost/mantisbt/api/soap/mantisconnect.php');
 define('MANTIS_USERNAME', 'administrator');
