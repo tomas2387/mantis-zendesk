@@ -59,7 +59,6 @@ class FakeResult
 class userControllerTest extends PHPUnit_Framework_TestCase
 {
 
-    private $mockConnector;
 
     /*protected function setUp()
     {
@@ -191,12 +190,13 @@ class userControllerTest extends PHPUnit_Framework_TestCase
      */
     public function test_getThisZendeskReporter___(){
         $stub = $this->getMock('connector', //Nombre de la clase
-            array('getThisZendeskReporter'), //Nombre de las funciones
-            array('1') //Parametros
+            array('getThisZendeskReporter')
         );
+
         $stub->expects($this->once())
             ->method('getThisZendeskReporter')
             ->will($this->returnValue(new FakeResult()));
+
         $expected = $this->createReporter(1, "Cristiano Ronaldo", "tristiano@portugal.pt");
         $userController = new userController($stub);
         $this->assertEquals($expected, $userController->getThisZendeskReporter(1));
