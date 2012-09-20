@@ -2,7 +2,8 @@
 require_once __DIR__ . '/../../mantis/controller/userController.php';
 require_once __DIR__ . '/FakeConector.php';
 
-class FakeReporter {
+class FakeReporter
+{
     public $id;
     public $name;
     public $email;
@@ -23,7 +24,6 @@ class FakeReporter {
         $this->name = $name;
     }
 }
-
 
 
 class FakeResult
@@ -85,8 +85,8 @@ class userControllerTest extends PHPUnit_Framework_TestCase
         $expected = array($reporter1, $reporter2);
 
         // Create a stub for the SomeClass class
-        $stub = $this->getMock('connector', //nombre de la clase
-            array('getIssuesByProjectId'), //nombre de las funciones
+        $stub = $this->getMock('connector', //Class name
+            array('getIssuesByProjectId'), //method name
             array('1') //parametros para las funciones
         );
         // Configure the stub
@@ -149,18 +149,18 @@ class userControllerTest extends PHPUnit_Framework_TestCase
      */
     public function test_getZendeskReporters_xx__returnArrayUsersWithEmail()
     {
-        $stub = $this->getMock('connector', //nombre de la clase
-            array('getZendeskReporters') //nombre de las funciones
+        $stub = $this->getMock('connector', //Class name
+            array('getZendeskReporters') //Method
         );
 
         $userObjects = new FakeResult();
 
         $stub->expects($this->once())
             ->method('getZendeskReporters')
-            ->will($this->returnValue( $userObjects ));
+            ->will($this->returnValue($userObjects));
 
-        $this->assertEquals( is_array($userObjects->users), true );
-        $this->assertCount( 5, $userObjects->users );
+        $this->assertEquals(is_array($userObjects->users), true);
+        $this->assertCount(5, $userObjects->users);
 
         $reporter1 = $this->createReporter(1, "Caio", "caio@company.org");
         $reporter2 = $this->createReporter(3, "Brahim", "brahim@company.org");
@@ -170,7 +170,7 @@ class userControllerTest extends PHPUnit_Framework_TestCase
         $expected = array($reporter1, $reporter2, $reporter3, $reporter4);
 
         $userController = new userController($stub);
-        $this->assertEquals($expected, $userController->getZendeskReporters() );
+        $this->assertEquals($expected, $userController->getZendeskReporters());
     }
 
     private function createReporter($id, $name, $email)
@@ -188,9 +188,10 @@ class userControllerTest extends PHPUnit_Framework_TestCase
      * with:
      * should:
      */
-    public function test_getThisZendeskReporter___(){
-        $stub = $this->getMock('connector', //Nombre de la clase
-            array('getThisZendeskReporter')
+    public function test_getThisZendeskReporter___()
+    {
+        $stub = $this->getMock('connector', //Class name
+            array('getThisZendeskReporter') //Method
         );
 
         $stub->expects($this->once())

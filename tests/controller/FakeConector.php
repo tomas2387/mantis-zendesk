@@ -4,11 +4,11 @@ class FakeConector
 {
     private $arrayReturn;
 
-    function __construct($array = NULL) {
-        if( ! is_null($array) ) {
+    function __construct($array = NULL)
+    {
+        if (!is_null($array)) {
             $this->arrayReturn = $array;
-        }
-        else {
+        } else {
             $this->arrayReturn = array(
                 array(
                     'id' => 1,
@@ -60,11 +60,13 @@ class FakeConector
         return $this->arrayReturn;
     }
 
-    function  getZendeskReporters(){
+    function  getZendeskReporters()
+    {
         return array();
     }
 
-    function getThisZendeskReporter(){
+    function getThisZendeskReporter()
+    {
 
     }
 

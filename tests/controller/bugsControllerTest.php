@@ -11,7 +11,8 @@ class bugsControllerTest extends PHPUnit_Framework_TestCase
 
     }
 
-    private function prepareBug($id, $summary, $description, $reporterName) {
+    private function prepareBug($id, $summary, $description, $reporterName)
+    {
         $bug = new Bug();
         $bug->setId($id);
         $bug->setSummary($summary);
@@ -50,12 +51,13 @@ class bugsControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-    * method: getMantisBugs
-    * when: CalledWithNullParameters
-    * with:
-    * should: ReturnEmptyArray
-    */
-    public function test_getMantisBugs_CalledWithNullParameters__ReturnEmptyArray() {
+     * method: getMantisBugs
+     * when: CalledWithNullParameters
+     * with:
+     * should: ReturnEmptyArray
+     */
+    public function test_getMantisBugs_CalledWithNullParameters__ReturnEmptyArray()
+    {
         $fc = new FakeConector(array());
         $bugsController = new bugsController($fc);
         $this->assertEquals($bugsController->getMantisBugs(NULL), array());
