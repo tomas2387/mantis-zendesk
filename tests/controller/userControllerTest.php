@@ -28,9 +28,21 @@ class FakeReporter {
 
 class FakeResult
 {
-
-
+    public $user;
     public $users;
+
+
+    function __construct()
+    {
+        $this->user = $this->createReporter(1, "Cristiano Ronaldo", "tristiano@portugal.pt");
+        $this->users = array(
+            $this->createReporter(1, "Caio", "caio@company.org"),
+            $this->createReporter(2, "Musta", NULL),
+            $this->createReporter(3, "Brahim", "brahim@company.org"),
+            $this->createReporter(4, "Extintor", "apagamifuego@company.org"),
+            $this->createReporter(5, "Telefono", "llamame@company.org")
+        );
+    }
 
     private function createReporter($id, $name, $email)
     {
@@ -41,17 +53,6 @@ class FakeResult
 
         return $repo;
     }
-
-    function __construct()
-    {
-        $this->users = array(
-            $this->createReporter(1, "Caio", "caio.araujo@eyeos.org"),
-            $this->createReporter(2, "Musta", NULL),
-            $this->createReporter(3, "Brahim", "brahim@eyeos.org"),
-            $this->createReporter(4, "Extintor", "apagamifuego@eyeos.org"),
-            $this->createReporter(5, "Telefono", "llamame@eyeos.org")
-        );
-    }
 }
 
 
@@ -60,13 +61,13 @@ class userControllerTest extends PHPUnit_Framework_TestCase
 
     private $mockConnector;
 
-    protected function setUp()
+    /*protected function setUp()
     {
         $this->mockConnector = $this->getMock('connector', //nombre de la clase
             array('getIssuesByProjectId', 'getZendeskReporters'), //nombre de las funciones
             array('1') //parametros para las funciones
         );
-    }
+    }*/
 
     /**
      * method: getMantisReporters
@@ -160,12 +161,12 @@ class userControllerTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue( $userObjects ));
 
         $this->assertEquals( is_array($userObjects->users), true );
-        $this->assertCount( 5, $userObjects->users  );
+        $this->assertCount( 5, $userObjects->users );
 
-        $reporter1 = $this->createReporter(1, "Caio", "caio.araujo@eyeos.org");
-        $reporter2 = $this->createReporter(3, "Brahim", "brahim@eyeos.org");
-        $reporter3 = $this->createReporter(4, "Extintor", "apagamifuego@eyeos.org");
-        $reporter4 = $this->createReporter(5, "Telefono", "llamame@eyeos.org");
+        $reporter1 = $this->createReporter(1, "Caio", "caio@company.org");
+        $reporter2 = $this->createReporter(3, "Brahim", "brahim@company.org");
+        $reporter3 = $this->createReporter(4, "Extintor", "apagamifuego@company.org");
+        $reporter4 = $this->createReporter(5, "Telefono", "llamame@company.org");
 
         $expected = array($reporter1, $reporter2, $reporter3, $reporter4);
 
@@ -188,10 +189,17 @@ class userControllerTest extends PHPUnit_Framework_TestCase
      * with:
      * should:
      */
-    /*public function test_getThisZendeskReporter___(){
-        $fc = new FakeConector();
-        $expected = $fc->getThisZendeskReporter();
-        $userController = new userController($fc);
-        $this->assertEquals($userController->getThisZendeskReporter(NULL), $expected);
-    }*/
+    public function test_getThisZendeskReporter___(){
+        $stub = $this->getMock('connector', //Nombre de la clase
+            array('getThisZendeskReporter'), //Nombre de las funciones
+            array('1') //Parametros
+        );
+        $stub->expects($this->once())
+            ->method('getThisZendeskReporter')
+            ->will($this->returnValue(new FakeResult()));
+        $expected = $this->createReporter(1, "Cristiano Ronaldo", "tristiano@portugal.pt");
+        $userController = new userController($stub);
+        $this->assertEquals($expected, $userController->getThisZendeskReporter(1));
+
+    }
 }
