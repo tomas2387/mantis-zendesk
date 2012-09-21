@@ -10,7 +10,7 @@ class Reporter
 {
     private $id;
     private $name;
-
+    private $email;
 
     public function getName()
     {
@@ -30,6 +30,10 @@ class Reporter
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
     }
 
     public function __toString(){

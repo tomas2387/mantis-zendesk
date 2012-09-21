@@ -12,10 +12,9 @@ class bugsController
 
     public function __construct($cm = null)
     {
-        if( isset($cm)) {
+        if (isset($cm)) {
             $this->cm = $cm;
-        }
-        else {
+        } else {
             $this->cm = new connector();
         }
     }
@@ -25,7 +24,7 @@ class bugsController
         $result = array();
 
         $ArrayMantisBugs = $this->cm->getIssuesByProjectId($projectId);
-        foreach($ArrayMantisBugs as $entryBug) {
+        foreach ($ArrayMantisBugs as $entryBug) {
             $bug = new Bug();
             $bug->setId($entryBug['id']);
             $bug->setSummary($entryBug['summary']);
