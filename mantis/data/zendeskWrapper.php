@@ -1,54 +1,22 @@
 <?php
-require_once __DIR__ . '/../../settings.php';
+require_once __DIR__ . '/curlWrap.php';
 
 class zendeskWrapper
 {
-    public function __construct()
+    private $curlWrap;
+    public function __construct($curlWrap = null)
     {
-
+        if(is_null($curlWrap)) {
+            $this->curlWrap = new curlWrap();
+        }
+        else {
+            $this->curlWrap = $curlWrap;
+        }
     }
 
     public function getUsers()
     {
-        return $this->curlWrap('/users.json', NULL, "GET");
-    }
-
-    private function curlWrap($url, $json, $action)
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
-        curl_setopt($ch, CURLOPT_URL, ZDURL . $url);
-
-        curl_setopt($ch, CURLOPT_USERPWD, ZDUSER . "/token:" . ZDAPIKEY);
-        switch ($action) {
-            case "POST":
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-                break;
-            case "GET":
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-                break;
-            case "PUT":
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-            default:
-                break;
-        }
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
-        curl_setopt($ch, CURLOPT_USERAGENT, "MozillaXYZ/1.0");
-        //FOR DEBUGGING
-        $fh = fopen(MANTIS2ZENDESK_ROOT . '/curl.log', 'w');
-        curl_setopt($ch, CURLOPT_VERBOSE, 1);
-        curl_setopt($ch, CURLOPT_STDERR, $fh);
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        $output = curl_exec($ch);
-        curl_close($ch);
-        $decoded = json_decode($output);
-
-        return $decoded;
+        return $this->curlWrap->curlWrapFunction('/users.json', NULL, "GET");
     }
 
     public function getUser($userZendeskId)
@@ -56,7 +24,7 @@ class zendeskWrapper
         if (empty($userZendeskId) || !isset($userZendeskId)) {
             return NULL;
         }
-        return $this->curlWrap('/users/' . $userZendeskId . '.json', NULL, "GET");
+        return $this->curlWrap->curlWrapFunction('/users/' . $userZendeskId . '.json', NULL, "GET");
     }
 
     public function createTickets($ZendeskTicketsObjects)
@@ -67,7 +35,15 @@ class zendeskWrapper
 
         $responses = array();
         foreach ($ZendeskTicketsObjects as $ticket) {
-            $responses[] = $this->curlWrap("/tickets.json", json_encode($ticket, JSON_FORCE_OBJECT), "POST");
+            $objetoStdClass = $this->curlWrap->curlWrapFunction("/tickets.json", json_encode($ticket, JSON_FORCE_OBJECT), "POST");
+            if(isset($objetoStdClass->error)) {
+                $descriptionError = $objetoStdClass->details->base[0]->description;
+                $subject = isset($ticket['subject']) ?  $ticket['subject'] : "NO SUBJECT";
+                $responses[] = "Error on the ticket " . $subject . ': ' . $descriptionError;
+            }
+            else {
+                $responses[] = true;
+            }
         }
 
         return $responses;

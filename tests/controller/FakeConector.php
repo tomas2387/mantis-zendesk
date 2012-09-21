@@ -16,7 +16,9 @@ class FakeConector
                     'category' => "Bugs",
                     'priority' => "Alta",
                     'severity' => "High",
-                    'status' => "Open",
+                    'status' => array(
+                        'name' => 'new'
+                    ),
 
                     'reporter' => array(
                         'name' => 'Pepito'
@@ -38,7 +40,9 @@ class FakeConector
                     'category' => "Bugs",
                     'priority' => "Alta",
                     'severity' => "High",
-                    'status' => "Open",
+                    'status'  => array(
+                        'name' => 'new'
+                    ),
 
                     'reporter' => array(
                         'name' => 'Caio'

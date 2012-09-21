@@ -16,7 +16,7 @@ class fakesoapclient {
                     return array();
                 }
 
-
+                return array();
             break;
             case 'mc_project_get_issues':
 
@@ -54,5 +54,20 @@ class mantisWrapperTest extends PHPUnit_Framework_TestCase
         $expected = array();
 
         $this->assertEquals($mantisWrapper->getProjectIdFromName("EquipoSupport"), $expected);
+    }
+    
+    /**
+    * method: getProjectIssues
+    * when: calledWithCorrectParameters
+    * with: 
+    * should: ReturnIssuesFromMantis
+    */
+    public function test_getProjectIssues_calledWithCorrectParameters__ReturnIssuesFromMantis()
+    {
+        $mantisWrapper = new mantisWrapper();
+        $actual = $mantisWrapper->getProjectIssues(1);
+        $expected = array();
+
+        $this->assertEquals($expected, $actual);
     }
 }

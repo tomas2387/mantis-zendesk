@@ -14,7 +14,7 @@ class migrateView extends Item
     public function renderView()
     {
         $html = '<div class="title">Done</div>';
-        if ($this->result->id === 1) {
+        if ($this->result->id == 1) {
             $html .= '<div>Bugs correctly migrated to Zendesk</div>';
         } else {
             $html .= '<div>There was an error</div><div>' . $this->result->text . '</div>';

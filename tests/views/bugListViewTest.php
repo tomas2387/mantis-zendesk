@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . '/../../mantis/views/bugLists.php';
+require_once __DIR__ . '/../../mantis/model/Bug.php';
+require_once __DIR__ . '/../../mantis/model/Reporter.php';
 
 class bugListViewTest extends PHPUnit_Framework_TestCase
 {
@@ -60,6 +62,58 @@ class bugListViewTest extends PHPUnit_Framework_TestCase
 
         $expected .= '</div>';
         $expected .= '<div class="block"><div class="title2"><span>Bug List</span></div></div>';
+        $expected .= $this->baseFooterHtmlExpected;
+
+        $this->verify($this->bugListView, $expected);
+    }
+
+
+    private function createBug($id, $summary, $description, $reporterName) {
+        $bug = new Bug();
+        $bug->setId($id);
+        $bug->setDescription($description);
+        $bug->setSummary($summary);
+
+        $reporter = new Reporter();
+        $reporter->setName($reporterName);
+        $bug->setReporter($reporter);
+
+        return $bug;
+    }
+
+    /**
+    * method: renderView
+    * when: calledwithcorrectparameters
+    * with:
+    * should: returncorrectbuglist
+    */
+    public function test_renderView_calledwithcorrectparameters__returncorrectbuglist()
+    {
+
+        $bug1 = $this->createBug(1, "hola", "adios", "Pepe");
+
+        $arrayMantisReporters = array();
+        $arrayZendeskReporters = array();
+        $arrayMantisBugs = array($bug1);
+
+        $this->bugListView->setProjectId(1);
+        $this->bugListView->setArrayMantisReporters($arrayMantisReporters);
+        $this->bugListView->setArrayZendeskReporters($arrayZendeskReporters);
+        $this->bugListView->setArrayMantisBugs($arrayMantisBugs);
+
+        $expected  = $this->baseHeadHtmlExpected;
+
+        $expected .= '<div>';
+        $expected .= '';
+        $expected .= '</div>';
+
+        $expected .= '</div>';
+        $expected .= '<div class="block"><div class="title2"><span>Bug List</span></div>';
+        $expected .= '<div class="bug"><span class="number">1</span><span class="summary" title="description">hola</span>';
+        $expected .= '<div class="masdatos hidden"><div><span class="bolded-text">Description:</span>adios</div>';
+        $expected .= '<div><span class="bolded-text">Reporter:</span>Pepe</div></div></div>';
+
+        $expected .= '</div>';
         $expected .= $this->baseFooterHtmlExpected;
 
         $this->verify($this->bugListView, $expected);

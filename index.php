@@ -27,12 +27,14 @@ if (empty($_GET)) {
         $view->setErrorText("No project specified");
     }
     else {
+        $selectOnlyOpenIssues = isset($_GET['openissues']) ? true : false;
+
         $uc = new userController();
         $arrayMantisReporters = $uc->getMantisReporters($_GET['project']);
         $arrayZendeskReporters = $uc->getZendeskReporters();
 
         $bc = new bugsController();
-        $arrayMantisBugs = $bc->getMantisBugs($_GET['project']);
+        $arrayMantisBugs = $bc->getMantisBugs($_GET['project'], $selectOnlyOpenIssues);
 
         $view = new bugListView();
         $view->setProjectId($_GET['project']);

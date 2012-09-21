@@ -16,7 +16,7 @@ class connector
     public function getIssues($projectName)
     {
         $projectID = $this->mw->getProjectIdFromName($projectName);
-        if (!isset($projectID) || empty($projectID)) return json_encode(array('error' => "That project doesn't exists!"));
+        if (!isset($projectID) || empty($projectID)) return array('error' => "That project doesn't exists!");
 
         return $this->mw->getProjectIssues($projectID);
     }

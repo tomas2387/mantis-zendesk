@@ -11,12 +11,13 @@ class bugsControllerTest extends PHPUnit_Framework_TestCase
 
     }
 
-    private function prepareBug($id, $summary, $description, $reporterName)
+    private function prepareBug($id, $summary, $description, $reporterName, $status)
     {
         $bug = new Bug();
         $bug->setId($id);
         $bug->setSummary($summary);
         $bug->setDescription($description);
+        $bug->setStatus($status);
 
         $reporter = new Reporter();
         $reporter->setName($reporterName);
@@ -37,17 +38,19 @@ class bugsControllerTest extends PHPUnit_Framework_TestCase
         $bug1 = $this->prepareBug(1,
             "No me funciona el extintor",
             "Si pongo boca a bajo el extintor no me funciona",
-            'Pepito');
+            'Pepito',
+            "new");
 
         $bug2 = $this->prepareBug(2,
             "Estoy en brasil",
             "O pais mais grande du mundo",
-            'Caio');
+            'Caio',
+            "new");
         $expected = array($bug1, $bug2);
 
         $fc = new FakeConector();
         $bugsController = new bugsController($fc);
-        $this->assertEquals($bugsController->getMantisBugs(NULL), $expected);
+        $this->assertEquals($expected, $bugsController->getMantisBugs(NULL));
     }
 
     /**

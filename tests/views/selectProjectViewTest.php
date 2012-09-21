@@ -13,7 +13,7 @@ class selectProjectViewTest extends PHPUnit_Framework_TestCase
         <div>Check the settings.php file to set correctly your mantis endpoint and zendesk API Key</div>
         <div></div>
         <form class="form" action="" method="get">
-            <input type="hidden" name="bugList" value="">';
+            <input type="hidden" name="bugList" value=""><div><select name="project">';
 
 
     private function pushProject($array, $id, $name)
@@ -38,15 +38,22 @@ class selectProjectViewTest extends PHPUnit_Framework_TestCase
     public function getTestData()
     {
         $array = array();
-        $array = $this->pushProject($array, "1", "a bug");
-        $array = $this->pushProject($array, "2", "another bug");
+        $array = $this->pushProject($array, "1", "a project");
+        $array = $this->pushProject($array, "2", "another project");
         return array(
             array($array, $this->baseHtmlExpected .
-                '<select name="project"> <option value = "1" >a bug</option><option value = "2" >another bug</option> </select><input type="submit" value = "Next"></form><div class="errormessage hidden"></div>'),
+                '<option value = "1" >a project</option>' .
+                '<option value = "2" >another project</option>' .
+                '</select>' .
+                '<input type="submit" value = "Next">' .
+                '</div><div>' .
+                '<input id="openissues" name="openissues" value="true" type="checkbox" checked="checked">' .
+                '<label for="openissues">I want to migrate only new mantis bugs</label>' .
+                '</div></form><div class="errormessage hidden"></div>'),
             array(array(), $this->baseHtmlExpected .
-                '<select name="project">  </select><input type="submit" value = "Next"></form><div class="errormessage hidden"></div>'),
+                '</select><input type="submit" value = "Next"></div><div><input id="openissues" name="openissues" value="true" type="checkbox" checked="checked"><label for="openissues">I want to migrate only new mantis bugs</label></div></form><div class="errormessage hidden"></div>'),
             array(NULL, $this->baseHtmlExpected .
-                '<select name="project">  </select><input type="submit" value = "Next"></form><div class="errormessage hidden"></div>'),
+                '</select><input type="submit" value = "Next"></div><div><input id="openissues" name="openissues" value="true" type="checkbox" checked="checked"><label for="openissues">I want to migrate only new mantis bugs</label></div></form><div class="errormessage hidden"></div>'),
         );
     }
 

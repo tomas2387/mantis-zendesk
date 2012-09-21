@@ -34,9 +34,9 @@ class bugListView {
 
         $bugList = '<div class="block"><div class="title2"><span>Bug List</span></div>';
         foreach ($this->arrayMantisBugs as $bug) {
-            $bugList .= '<div class="bug"><span class="number">' . $bug['id'] . '</span><span class="summary" title="description">' . $bug['summary'] . '</span>';
-            $bugList .= '<div class="masdatos hidden"><div><span class="bolded-text">Description:</span>' . $bug['description'] . '</div>';
-            $bugList .= '<div><span class="bolded-text">Reporter:</span>' . $bug['reporter']['name'] . '</div></div></div>';
+            $bugList .= '<div class="bug"><span class="number">' . $bug->getId() . '</span><span class="summary" title="description">' . $bug->getSummary() . '</span>';
+            $bugList .= '<div class="masdatos hidden"><div><span class="bolded-text">Description:</span>' . $bug->getDescription() . '</div>';
+            $bugList .= '<div><span class="bolded-text">Reporter:</span>' . $bug->getReporter()->getName() . '</div></div></div>';
         }
         $bugList .= '</div>';
         $result .= $usersMapping . $bugList . '<button type="submit" id="migrate">Move all to Zendesk</button></form>';

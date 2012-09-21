@@ -17,15 +17,14 @@ class selectProjectView extends Item
         <div>Check the settings.php file to set correctly your mantis endpoint and zendesk API Key</div>
         <div></div>
         <form class=\"form\" action=\"\" method=\"get\">
-            <input type=\"hidden\" name=\"bugList\" value=\"\"><select name=\"project\"> ";
-
+            <input type=\"hidden\" name=\"bugList\" value=\"\"><div><select name=\"project\">";
 
         $list = "";
         foreach ($this->arrayMantisProject as $project) {
             $list .= "<option value = \"" . $project['id'] . "\" >" . $project['name'] . "</option>";
         }
 
-        $result .= $list . " </select><input type=\"submit\" value = \"Next\"></form><div class=\"errormessage hidden\"></div>";
+        $result .= $list . "</select><input type=\"submit\" value = \"Next\"></div><div><input id=\"openissues\" name=\"openissues\" value=\"true\" type=\"checkbox\" checked=\"checked\"><label for=\"openissues\">I want to migrate only new mantis bugs</label></div></form><div class=\"errormessage hidden\"></div>";
         return $result;
     }
 }
