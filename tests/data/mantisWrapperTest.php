@@ -65,7 +65,7 @@ class mantisWrapperTest extends PHPUnit_Framework_TestCase
     public function test_getProjectIssues_calledWithCorrectParameters__ReturnIssuesFromMantis()
     {
         $mantisWrapper = new mantisWrapper();
-        $actual = $mantisWrapper->getProjectIssues(1);
+        $actual = $mantisWrapper->getProjectIssues(2);
         $expected = array();
 
         $this->assertEquals($expected, $actual);

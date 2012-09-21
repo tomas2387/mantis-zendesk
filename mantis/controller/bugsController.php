@@ -10,6 +10,7 @@ require_once __DIR__ . '/../model/Result.php';
 
 class bugsController
 {
+    const NEW_BUG_MANTIS_CODE = "10";
     private $cm;
 
     public function __construct($cm = null)
@@ -27,7 +28,7 @@ class bugsController
 
         $ArrayMantisBugs = $this->cm->getIssuesByProjectId($projectId);
         foreach ($ArrayMantisBugs as $entryBug) {
-            if( ($selectOnlyOpenIssues && $entryBug['status']['name'] == "new") ||
+            if( ($selectOnlyOpenIssues && $entryBug['status']['id'] == bugsController::NEW_BUG_MANTIS_CODE) ||
                 ( ! $selectOnlyOpenIssues) )
             {
                 $bug = new Bug();
