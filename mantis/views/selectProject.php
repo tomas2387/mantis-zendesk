@@ -21,7 +21,7 @@ class selectProjectView extends Item
 
         $list = "";
         foreach ($this->arrayMantisProject as $project) {
-            $list .= "<option value = \"" . $project['id'] . "\" >" . $project['name'] . "</option>";
+            $list .= "<option value = \"" . $project->getId() . "\" >" . $project->getName() . "</option>";
         }
 
         $result .= $list . "</select><input type=\"submit\" value = \"Next\"></div><div><input id=\"openissues\" name=\"openissues\" value=\"true\" type=\"checkbox\" checked=\"checked\"><label for=\"openissues\">I want to migrate only new mantis bugs</label></div></form><div class=\"errormessage hidden\"></div>";

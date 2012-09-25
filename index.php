@@ -44,9 +44,11 @@ if (empty($_GET)) {
     }
 } else if (isset($_GET['migrate'])) {
     $bc = new bugsController();
-    $result = $bc->bugsToZendeskTickets(intval($_GET['migrate']), $_POST);
 
-    $view = new migrateView($result);
+    $ArrayOfResults = $bc->bugsToZendeskTickets(intval($_GET['migrate']), $_POST);
+
+    $view = new migrateView();
+    $view->setArrayResults($ArrayOfResults);
 }
 
 $header = new Header();

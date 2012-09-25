@@ -23,7 +23,6 @@ class Result extends Item
 
     public function renderView()
     {
-        $returnHtml = "";
         if($this->id == -1) {
             $returnHtml = "<div>".$this->text."</div>";
         }

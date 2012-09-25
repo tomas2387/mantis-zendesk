@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../../mantis/Item.php";
+require_once __DIR__ . "/../../mantis/model/Project.php";
 require_once __DIR__ . "/../../mantis/views/selectProject.php";
 
 
@@ -18,9 +19,10 @@ class selectProjectViewTest extends PHPUnit_Framework_TestCase
 
     private function pushProject($array, $id, $name)
     {
-        $project['id'] = $id;
-        $project['name'] = $name;
-        array_push($array, $project);
+        $project = new Project();
+        $project->setId($id);
+        $project->setName($name);
+        $array[] = $project;
         return $array;
     }
 

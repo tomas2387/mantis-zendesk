@@ -33,17 +33,17 @@ class bugsController
             {
                 $bug = new Bug();
                 $bug->setId($entryBug['id']);
-                $bug->setSummary($entryBug['summary']);
-                $bug->setDescription($entryBug['description']);
+                $bug->setSummary(utf8_encode($entryBug['summary']));
+                $bug->setDescription(utf8_encode($entryBug['description']));
                 $bug->setStatus($entryBug['status']['name']);
                 if(isset($entryBug['additional_information']))
-                    $bug->setAdditionalInformation($entryBug['additional_information']);
+                    $bug->setAdditionalInformation(utf8_encode($entryBug['additional_information']));
 
                 if(isset($entryBug['steps_to_reproduce']))
-                    $bug->setStepsToReproduce($entryBug['steps_to_reproduce']);
+                    $bug->setStepsToReproduce(utf8_encode($entryBug['steps_to_reproduce']));
 
                 $reporter = new Reporter();
-                $reporter->setName($entryBug['reporter']['name']);
+                $reporter->setName(utf8_encode($entryBug['reporter']['name']));
                 $bug->setReporter($reporter);
 
                 $result[] = $bug;
@@ -61,31 +61,16 @@ class bugsController
 
         $uc = new userController($this->cm);
         foreach ($mantisBugs as $bug) {
-            $zendeskUserReporterId = $userMap[$bug->getReporter()->getName()];
-
+            $reporter = $bug->getReporter()->getName();
+            $reporter = str_replace('.', '_', $reporter);
+            $zendeskUserReporterId = $userMap[$reporter];
             $zendeskUser = $uc->getThisZendeskReporter($zendeskUserReporterId);
             $ZendeskTicketsObjects[] = $this->parseOneBug($bug, $zendeskUser);
         }
 
         $responseMigration = $this->cm->sendTicketsToZendesk($ZendeskTicketsObjects);
 
-        $result = new Result();
-        if(is_null($responseMigration)) {
-            $result->id = 0;
-            $result->text = "No tickets to create on Zendesk. You must be sure you selected the right project";
-        }
-        else if(is_array($responseMigration)) {
-            $result->id = 1;
-            foreach($responseMigration as $oneResponse) {
-                $result->text = "";
-                if($oneResponse !== true) {
-                    $result->id = 0;
-                    $result->text .= $oneResponse . '<br>';
-                }
-            }
-        }
-
-        return $result;
+        return $responseMigration;
     }
 
     /*
@@ -122,13 +107,23 @@ class bugsController
             $finalDescription .= "\n Additional Information--> \n" . $aditional;
         }
 
+
+        $summary = $mantisBug->getSummary();
+        if( ! isset($summary) || empty($summary))   {
+            $summary = "null";
+        }
+
+        if( ! isset($finalDescription) || empty($finalDescription))   {
+            $finalDescription = "null";
+        }
+
         return array(
             'ticket' => array(
-                'subject' => $mantisBug->getSummary(),
+                'subject' => $summary,
                 'description' => $finalDescription,
                 'requester' => array(
-                    'name' => $zendeskUser->name,
-                    'email' => $zendeskUser->email
+                    'name' => $zendeskUser->getName(),
+                    'email' => $zendeskUser->getEmail()
                 )
             )
         );

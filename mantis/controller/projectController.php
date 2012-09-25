@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../data/connector.php';
+require_once __DIR__ . '/../model/Project.php';
 
 class projectController
 {
@@ -13,6 +14,16 @@ class projectController
 
     public function getMantisProjects()
     {
-        return $this->cm->getProjects();
+        $result = array();
+        $arrayMantisProjects = $this->cm->getProjects();
+        foreach($arrayMantisProjects as $projectFromArray) {
+            $project = new Project();
+            $project->setId($projectFromArray['id']);
+            $project->setName(utf8_encode($projectFromArray['name']));
+
+            $result[] = $project;
+        }
+
+        return $result;
     }
 }

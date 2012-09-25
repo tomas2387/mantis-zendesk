@@ -32,10 +32,12 @@ class zendeskWrapper
         if (empty($ZendeskTicketsObjects) || !isset($ZendeskTicketsObjects) || !is_array($ZendeskTicketsObjects)) {
             return NULL;
         }
+
+
         $ticketCounter = 1;
         $responses = array();
         foreach ($ZendeskTicketsObjects as $ticket) {
-            $objetoStdClass = $this->curlWrap->curlWrapFunction("/tickets.json", json_encode($ticket['ticket'], JSON_FORCE_OBJECT), "POST");
+            $objetoStdClass = $this->curlWrap->curlWrapFunction("/tickets.json", json_encode($ticket, JSON_FORCE_OBJECT), "POST");
 
             $result = new Result();
             if(isset($objetoStdClass->error)) {

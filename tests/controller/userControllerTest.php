@@ -175,9 +175,9 @@ class userControllerTest extends PHPUnit_Framework_TestCase
 
     private function createReporter($id, $name, $email)
     {
-        $reporter = new FakeReporter();
+        $reporter = new Reporter();
         $reporter->setName($name);
-        $reporter->setId($id);
+        if(!empty($id)) $reporter->setId($id);
         $reporter->setEmail($email);
         return $reporter;
     }
@@ -194,13 +194,28 @@ class userControllerTest extends PHPUnit_Framework_TestCase
             array('getThisZendeskReporter') //Method
         );
 
+        $stdObject = new stdClass();
+        $stdObject->user = new stdClass();
+        $stdObject->user->name = "Cristiano Ronaldo";
+        $stdObject->user->email = "tristiano@portugal.pt";
+
         $stub->expects($this->once())
             ->method('getThisZendeskReporter')
-            ->will($this->returnValue(new FakeResult()));
+            ->will($this->returnValue($stdObject));
 
-        $expected = $this->createReporter(1, "Cristiano Ronaldo", "tristiano@portugal.pt");
+        $expected = $this->createReporter(null, "Cristiano Ronaldo", "tristiano@portugal.pt");
         $userController = new userController($stub);
+
+//        $this->assertTrue($this->reportersIguales($expected, $userController->getThisZendeskReporter(1)));
+
         $this->assertEquals($expected, $userController->getThisZendeskReporter(1));
 
+    }
+
+    protected function reportersIguales($r1, $r2) {
+        if($r1->getName() != $r2->getName()) return 1;
+        if($r1->getEmail() != $r2->getEmail()) return 2;
+
+        return true;
     }
 }

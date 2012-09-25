@@ -35,7 +35,11 @@ class userController
 
         foreach ($userObjects->users as $user) {
             if (!empty($user->email)) {
-                $arrayResult[] = $user;
+                $reporter = new Reporter();
+                $reporter->setId($user->id);
+                $reporter->setName($user->name);
+                $reporter->setEmail($user->email);
+                $arrayResult[] = $reporter;
             }
         }
 
@@ -44,8 +48,14 @@ class userController
 
     public function getThisZendeskReporter($userZendeskId)
     {
-        $user = $this->cm->getThisZendeskReporter($userZendeskId);
-        return $user->user;
+        $object = $this->cm->getThisZendeskReporter($userZendeskId);
+        $user = $object->user;
+
+        $reporter = new Reporter();
+        $reporter->setName($user->name);
+        $reporter->setEmail($user->email);
+
+        return $reporter;
     }
 
 }

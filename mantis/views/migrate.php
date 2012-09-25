@@ -15,13 +15,19 @@ class migrateView extends Item
             $this->ArrayResults[] = $result;
     }
 
+    public function setArrayResults($ArrayResults)
+    {
+        $this->ArrayResults = $ArrayResults;
+    }
+
+
     public function renderView()
     {
         $html = "";
         if(empty($this->ArrayResults)) {
             $html = '<div class="title">Fatal Error</div><div>No results on the migration (maybe no issues were migrated?)</div>';
         }
-        else {
+    else {
             $html = '<div class="title">Done</div>';
 
             foreach($this->ArrayResults as $result)
@@ -34,6 +40,7 @@ class migrateView extends Item
 
         return $html;
     }
+
 }
 
 

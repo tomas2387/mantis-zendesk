@@ -20,11 +20,11 @@ class bugListView {
 
         $usersMapping = '<div class="block"><div class="title2"><span>Users Mapping</span></div><div>';
         foreach ($this->arrayMantisReporters as $MantisUser) {
-            $usersMapping .= '<div><span>The mantis user <span style="color: gray; font-weight: bold">"' . $MantisUser . '"</span> in Zendesk is going to be <img src="resources/images/icons/arrow_right.png" style="position: relative; top: 3px;"></span>';
+            $usersMapping .= '<div><span>The mantis user <span style="color: gray; font-weight: bold">"' . $MantisUser->getName() . '"</span> in Zendesk is going to be <img src="resources/images/icons/arrow_right.png" style="position: relative; top: 3px;"></span>';
 
-            $selectMapping = '<select name="' . $MantisUser . '">';
+            $selectMapping = '<select name="' . $MantisUser->getName() . '">';
             foreach ($this->arrayZendeskReporters as $ZendeskUser) {
-                $selectMapping .= '<option value="' . $ZendeskUser->id . '">' . $ZendeskUser->name . '</option>';
+                $selectMapping .= '<option value="' . $ZendeskUser->getId() . '">' . $ZendeskUser->getName() . '</option>';
             }
             $selectMapping .= '</select>';
 
