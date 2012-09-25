@@ -32,20 +32,46 @@ class zendeskWrapper
         if (empty($ZendeskTicketsObjects) || !isset($ZendeskTicketsObjects) || !is_array($ZendeskTicketsObjects)) {
             return NULL;
         }
-
+        $ticketCounter = 1;
         $responses = array();
         foreach ($ZendeskTicketsObjects as $ticket) {
-            $objetoStdClass = $this->curlWrap->curlWrapFunction("/tickets.json", json_encode($ticket, JSON_FORCE_OBJECT), "POST");
+            $objetoStdClass = $this->curlWrap->curlWrapFunction("/tickets.json", json_encode($ticket['ticket'], JSON_FORCE_OBJECT), "POST");
+
+            $result = new Result();
             if(isset($objetoStdClass->error)) {
                 $descriptionError = $objetoStdClass->details->base[0]->description;
-                $subject = isset($ticket['subject']) ?  $ticket['subject'] : "NO SUBJECT";
-                $responses[] = "Error on the ticket " . $subject . ': ' . $descriptionError;
+
+                $result->id = 0;
+                $result->text = "Error on the ticket number " . $ticketCounter . ": " . $descriptionError;
+                $result->ticket = $this->mapTicketToBug($ticket['ticket'], $ticketCounter);
             }
             else {
-                $responses[] = true;
+                $result->id = 1;
+                $result->text = "Ticket number " . $ticketCounter . ": OK";
+                $result->ticket = $this->mapTicketToBug($ticket['ticket'], $ticketCounter);
             }
+
+            $responses[] = $result;
+            $ticketCounter++;
         }
 
         return $responses;
+    }
+
+
+    private function mapTicketToBug($ticket, $ticketNumber) {
+        $bug = new Bug();
+        $bug->setId($ticketNumber);
+        if(isset($ticket['subject'])) $bug->setSummary($ticket['subject']);
+        if(isset($ticket['description'])) $bug->setDescription($ticket['description']);
+
+        $reporter = new Reporter();
+
+        $requesterArray = $ticket['requester'];
+        if(isset($requesterArray['name'])) $reporter->setName($requesterArray['name']);
+        if(isset($requesterArray['email'])) $reporter->setEmail($requesterArray['email']);
+        $bug->setReporter($reporter);
+
+        return $bug;
     }
 }

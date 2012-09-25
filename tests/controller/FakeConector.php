@@ -17,6 +17,7 @@ class FakeConector
                     'priority' => "Alta",
                     'severity' => "High",
                     'status' => array(
+                        'id' => 10,
                         'name' => 'new'
                     ),
 
@@ -41,6 +42,7 @@ class FakeConector
                     'priority' => "Alta",
                     'severity' => "High",
                     'status'  => array(
+                        'id' => 10,
                         'name' => 'new'
                     ),
 

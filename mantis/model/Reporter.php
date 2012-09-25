@@ -36,7 +36,13 @@ class Reporter
         $this->email = $email;
     }
 
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
     public function __toString(){
-        return $this->getName();
+        return $this->getName() . " (" . $this->getEmail() . ")";
     }
 }

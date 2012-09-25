@@ -190,7 +190,7 @@ class Bug extends Item {
             }
 
             if( ! empty($this->reporter)) {
-                $masDatos .= '<div><span class="bolded-text">Reporter:</span>'.$this->reporter->getName().'</div>';
+                $masDatos .= '<div><span class="bolded-text">Reporter:</span>' . $this->reporter->__toString() . '</div>';
             }
             else {
                 $masDatos .= '<div>No data for Reporter</div>';

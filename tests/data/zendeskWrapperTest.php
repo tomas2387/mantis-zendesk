@@ -7,42 +7,33 @@
 require_once __DIR__ . '/../../mantis/data/zendeskWrapper.php';
 require_once __DIR__ . '/../../mantis/data/curlWrap.php';
 
-class zendeskWrapperTest extends PHPUnit_Framework_TestCase{
+require_once __DIR__ . '/../../mantis/model/Bug.php';
+require_once __DIR__ . '/../../mantis/model/Reporter.php';
+require_once __DIR__ . '/../../mantis/model/Result.php';
 
-    protected function setUp(){
-    }
-
+class zendeskWrapperTest extends PHPUnit_Framework_TestCase
+{
     /**
     * method: createTickets
-    * when: CorrectTicketParameters
+    * when: InCorrectTicketParameters
     * with:
     * should: ReturnCorrectAnswer
     */
-    public function test_createTickets_CorrectTicketParameters__ReturnCorrectAnswer()
+    public function test_createTickets_InCorrectTicketParameters__ReturnCorrectAnswer()
     {
-        $parameters = array();
-       /* $parameters[] = array(
-            'ticket' => array(
-                'subject' => "Subject ticket",
-                'description' => "Description ticket",
-                'requester' => array(
-                    'name' => "Test",
-                    'email' => "tomas2387@gmail.com"
-                )
-            )
-        );*/
-        $parameters[] = array(
-            'ticket' => array(
-                'subject' => "",
-                'requester' => array(
-                    'name' => "Test",
-                    'email' => "tomas2387@gmail.com"
-                )
+        $parameters = array(
+            array(
+                    'ticket' => array(
+                        'subject' => "",
+                        'requester' => array(
+                            'name' => "Test",
+                            'email' => "tomas2387@gmail.com"
+                        )
+                    )
             )
         );
 
-        $stub = $this->getMock('curlWrap',
-                                array('curlWrapFunction'));
+        $stub = $this->getMock('curlWrap', array('curlWrapFunction'));
 
         $stdClassWithError = new stdClass();
         $stdClassWithError->error = "InvalidArgument";
@@ -60,8 +51,21 @@ class zendeskWrapperTest extends PHPUnit_Framework_TestCase{
         $zw = new zendeskWrapper($stub);
         $actual = $zw->createTickets($parameters);
 
+
+        $zendeskIssue = new Bug();
+        $zendeskIssue->setId(1);
+
+        $reporter = new Reporter();
+        $reporter->setName("Test");
+        $reporter->setEmail("tomas2387@gmail.com");
+        $zendeskIssue->setReporter($reporter);
+
+        $result = new Result();
+        $result->id = 0;
+        $result->text = "Error on the ticket number 1: Base Description: cannot be blank";
+        $result->ticket = $zendeskIssue;
         $expected = array(
-            "Error on the ticket NO SUBJECT: Base Description: cannot be blank"
+            $result
         );
         $this->assertEquals($expected, $actual);
     }

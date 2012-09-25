@@ -3,6 +3,8 @@
 require_once __DIR__ . '/../../mantis/views/generalView.php';
 require_once __DIR__ . '/../../mantis/Item.php';
 require_once __DIR__ . '/../../mantis/model/Result.php';
+require_once __DIR__ . '/../../mantis/model/Bug.php';
+require_once __DIR__ . '/../../mantis/model/Reporter.php';
 require_once __DIR__ . '/../../mantis/views/migrate.php';
 
 class gereralViewTest extends PHPUnit_Framework_TestCase
@@ -39,15 +41,33 @@ class gereralViewTest extends PHPUnit_Framework_TestCase
     public function test_render_itemMigrateView__StringHtml()
     {
         $result = new Result();
-        $html = '<div class="title">Done</div><div>There was an error</div><div></div>';
-        $this->verifyRender(new migrateView($result), $html);
+        $result->id = 0;
+        $result->text = "Error on the ticket number 1: Base Description: cannot be blank";
+
+        $ticket = new Bug();
+        $ticket->setId(1);
+        $ticket->setSummary("Hola");
+        $ticket->setDescription("Descirption");
+
+        $reporter = new Reporter();
+        $reporter->setName("Tomas");
+        $reporter->setEmail("tomas2387@gmail.com");
+        $ticket->setReporter($reporter);
+
+        $result->ticket = $ticket;
+
+        $migrateView = new migrateView();
+        $migrateView->addResult($result);
+
+        $html = '<div class="title">Done</div><div><div><div>Error on the ticket number 1: Base Description: cannot be blank</div><div>'.$ticket->renderView().'</div></div></div>';
+        $this->verifyRender($migrateView, $html);
     }
 
-    private function verifyRender($param, $actual)
+    private function verifyRender($migrateView, $expected)
     {
         $gView = new generalView();
-        $gView->addItem($param);
-        $this->assertEquals($gView->render(), $actual);
+        $gView->addItem($migrateView);
+        $this->assertEquals($expected, $gView->render());
     }
 
 }

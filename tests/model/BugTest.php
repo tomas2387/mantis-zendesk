@@ -17,7 +17,7 @@ class BugTest extends PHPUnit_Framework_TestCase
         $expected .= '<span class="summary" title="description">This is a bug from mantis</span>';
         $expected .= '<div class="masdatos hidden">';
         $expected .= '<div><span class="bolded-text">Description:</span>A bug from mantis and we want to pass it to zendesk</div>';
-        $expected .= '<div><span class="bolded-text">Reporter:</span>Tomas Prado</div></div></div>';
+        $expected .= '<div><span class="bolded-text">Reporter:</span>Tomas Prado (tomas.prado@eyeos.com)</div></div></div>';
 
         $bug = new Bug();
         $bug->setId(1);
@@ -26,6 +26,7 @@ class BugTest extends PHPUnit_Framework_TestCase
 
         $reporter = new Reporter();
         $reporter->setName("Tomas Prado");
+        $reporter->setEmail("tomas.prado@eyeos.com");
         $bug->setReporter($reporter);
 
         $actual = $bug->renderView();
