@@ -30,7 +30,7 @@ class mantisWrapper
             ));
     }
 
-    public function getProjectIssues($projectId, $pageNumber = '', $perPage = '')
+    public function getProjectIssues($projectId, $pageNumber = '1', $perPage = '100')
     {
         return $this->soapClient->call('mc_project_get_issues',
             array(
