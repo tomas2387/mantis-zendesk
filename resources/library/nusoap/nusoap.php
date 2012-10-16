@@ -149,8 +149,8 @@ class nusoap_base
      * @var      string
      * @access   public
      */
-    var $soap_defencoding = 'ISO-8859-1';
-    //var $soap_defencoding = 'UTF-8';
+    //var $soap_defencoding = 'ISO-8859-1';
+    var $soap_defencoding = 'UTF-8';
 
     /**
      * namespaces in an array of prefix => uri
@@ -1922,7 +1922,7 @@ class nusoap_xmlschema extends nusoap_base
     {
         //print "in sTD() for type $type<br>";
         if ($typeDef = $this->getTypeDef($type)) {
-            $str .= '<' . $type;
+            $str = '<' . $type;
             if (is_array($typeDef['attrs'])) {
                 foreach ($typeDef['attrs'] as $attName => $data) {
                     $str .= " $attName=\"{type = " . $data['type'] . "}\"";
@@ -1961,7 +1961,7 @@ class nusoap_xmlschema extends nusoap_base
         if ($typeDef = $this->getTypeDef($type)) {
             // if struct
             if ($typeDef['phpType'] == 'struct') {
-                $buffer .= '<table>';
+                $buffer = '<table>';
                 foreach ($typeDef['elements'] as $child => $childDef) {
                     $buffer .= "
 					<tr><td align='right'>$childDef[name] (type: " . $this->getLocalPart($childDef['type']) . "):</td>
@@ -1970,7 +1970,7 @@ class nusoap_xmlschema extends nusoap_base
                 $buffer .= '</table>';
                 // if array
             } elseif ($typeDef['phpType'] == 'array') {
-                $buffer .= '<table>';
+                $buffer = '<table>';
                 for ($i = 0; $i < 3; $i++) {
                     $buffer .= "
 					<tr><td align='right'>array item (type: $typeDef[arrayType]):</td>
@@ -1979,10 +1979,10 @@ class nusoap_xmlschema extends nusoap_base
                 $buffer .= '</table>';
                 // if scalar
             } else {
-                $buffer .= "<input type='text' name='parameters[$name]'>";
+                $buffer = "<input type='text' name='parameters[$name]'>";
             }
         } else {
-            $buffer .= "<input type='text' name='parameters[$name]'>";
+            $buffer = "<input type='text' name='parameters[$name]'>";
         }
         return $buffer;
     }
@@ -2449,7 +2449,7 @@ class soap_transport_http extends nusoap_base
 
             // set response timeout
             $this->debug('set response timeout to ' . $response_timeout);
-            socket_set_timeout($this->fp, $response_timeout);
+            socket_set_timeout($this->fp, $response_timeout, 0);
 
             $this->debug('socket connected');
             return true;
@@ -8013,6 +8013,8 @@ class nusoap_client extends nusoap_base
         // eval the class
         eval($evalStr);
         // instantiate proxy object
+        $proxy = new nusoap_proxy();
+
         eval("\$proxy = new nusoap_proxy_$r('');");
         // transfer current wsdl data to the proxy thereby avoiding parsing the wsdl twice
         $proxy->endpointType = 'wsdl';
