@@ -10,7 +10,7 @@ Installation
 
 **1. Curl Installation**
 
-Do you have curl? If you don't follow this instructions below:
+Do you have curl? If you don't, follow this instructions below:
 
 * Execute in your terminal: 
 
@@ -27,7 +27,7 @@ Do you have curl? If you don't follow this instructions below:
 **2. Clone the Mantis 2 Zendesk files**
 
 * Go to **/var/www/**
-* git clone the files 
+* git clone the repository 
 
 <code>git clone https://github.com/tomas2387/mantis-zendesk.git</code>
 
