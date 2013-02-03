@@ -1,10 +1,8 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: eyeos
+ * Created by JetBrains PhpStorm
  * Date: 13/09/12
  * Time: 12:10
- * To change this template use File | Settings | File Templates.
  */
 class Reporter
 {
