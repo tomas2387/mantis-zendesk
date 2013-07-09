@@ -58,36 +58,36 @@ define("ZDURL", "https://yourorganizationurl.zendesk.com/api/v2");</code>
 ----------------------
 
 Installation for Windows   
-_
+-
 
-***1. You will need a webserver!** 
+**1. You will need a webserver!** 
 
 Install wampserver for example. 
 http://www.wampserver.com/en/
 
-***2. Curl Installation**   
+**2. Curl Installation**   
 
 
-2.1 Close WAMP (if running)
-2.2 Navigate to WAMP\bin\php\(your version of php)\
-2.3 Edit php.ini
-2.4 Search for curl, uncomment extension=php_curl.dll
-2.5 Navigate to WAMP\bin\Apache\(your version of apache)\bin\
-2.6 Edit php.ini
-2.7 Search for curl, uncomment extension=php_curl.dll
-2.8 Save both
-2.9 Restart WAMP
-
-***3. If you have git then clone the repository using the terminal**    
+2.1 Close WAMPSERVER (if running)    
+2.2 Navigate to C:\wamp\bin\php\(your version of php)\    
+2.3 Edit php.ini    
+2.4 Search for curl, uncomment extension=php_curl.dll    
+2.5 Navigate to C:\wamp\bin\Apache\(your version of apache)\bin\    
+2.6 Edit php.ini    
+2.7 Search for curl, uncomment extension=php_curl.dll    
+2.8 Save both    
+2.9 Restart WAMPSERVER   
+ 
+**3. If you have git then clone the repository using the terminal**    
 <code>cd C:/wamp/www/</code>    
 <code>git clone https://github.com/tomas2387/mantis-zendesk.git</code>    
 
 If you don't have git, download the project from here   
 https://github.com/tomas2387/mantis-zendesk/archive/0.1.zip
 
-and unzip it to C:/wamp/www/    
+and unzip it inside C:/wamp/www/    
 
-***4. Configure**   
+**4. Configure**   
 
 Go to the mantis-zendesk folder    
 
@@ -109,7 +109,7 @@ define("ZDURL", "https://yourorganizationurl.zendesk.com/api/v2");</code>
 
 
 
-***5. Use it!**    
+**5. Use it!**    
 
 Open WAMPSERVER and start the server!     
 
