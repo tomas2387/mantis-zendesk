@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../../mantis/views/bugLists.php';
-require_once __DIR__ . '/../../mantis/model/Bug.php';
-require_once __DIR__ . '/../../mantis/model/Reporter.php';
+require_once __DIR__ . '/../../src/views/bugLists.php';
+require_once __DIR__ . '/../../src/model/Bug.php';
+require_once __DIR__ . '/../../src/model/Reporter.php';
 
 class bugListViewTest extends PHPUnit_Framework_TestCase
 {

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../mantis/controller/userController.php';
+require_once __DIR__ . '/../../src/controller/userController.php';
 require_once __DIR__ . '/FakeConector.php';
 
 class FakeReporter

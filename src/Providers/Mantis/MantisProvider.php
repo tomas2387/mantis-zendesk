@@ -1,10 +1,14 @@
 <?php
-require_once __DIR__ . '/../../settings.php';
-require_once __DIR__ . '/../../resources/library/nusoap/nusoap.php';
+require_once __DIR__ . '/../../../settings.php';
+require_once __DIR__ . '/../../../resources/library/nusoap/nusoap.php';
 
-class mantisWrapper
+class MantisProvider
 {
+    /**
+     * @var nusoap_client
+     */
     private $soapClient;
+
     public function __construct($soap = null)
     {
         if( empty($soap)) {
@@ -20,8 +24,12 @@ class mantisWrapper
         return $this->soapClient->call('mc_version', array());
     }
 
-    public function getProjectIdFromName($projectName)
+    public function getProjectIdFromName($projectName = null)
     {
+        if(empty($projectName)) {
+            throw new InvalidArgumentException("Project name can not be null!");
+        }
+
         return $this->soapClient->call('mc_project_get_id_from_name',
             array(
                 'username' => MANTIS_USERNAME,

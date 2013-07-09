@@ -4,14 +4,14 @@
  * Date: 21/09/12
  * Time: 10:29
  */
-require_once __DIR__ . '/../../mantis/data/zendeskWrapper.php';
-require_once __DIR__ . '/../../mantis/data/curlWrap.php';
+require_once __DIR__ . '/../../../src/Providers/Zendesk/ZendeskProvider.php';
+require_once __DIR__ . '/../../../src/Providers/curlWrap.php';
 
-require_once __DIR__ . '/../../mantis/model/Bug.php';
-require_once __DIR__ . '/../../mantis/model/Reporter.php';
-require_once __DIR__ . '/../../mantis/model/Result.php';
+require_once __DIR__ . '/../../../src/model/Bug.php';
+require_once __DIR__ . '/../../../src/model/Reporter.php';
+require_once __DIR__ . '/../../../src/model/Result.php';
 
-class zendeskWrapperTest extends PHPUnit_Framework_TestCase
+class ZendeskProviderTest extends PHPUnit_Framework_TestCase
 {
     /**
     * method: createTickets
@@ -48,7 +48,7 @@ class zendeskWrapperTest extends PHPUnit_Framework_TestCase
             ->method('curlWrapFunction')
             ->will($this->returnValue($stdClassWithError));
 
-        $zw = new zendeskWrapper($stub);
+        $zw = new ZendeskProvider($stub);
         $actual = $zw->createTickets($parameters);
 
 

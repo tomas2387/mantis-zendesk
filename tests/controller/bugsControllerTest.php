@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . '/../../mantis/controller/bugsController.php';
+require_once dirname(__FILE__) . '/../../src/controller/bugsController.php';
 require_once __DIR__ . '/FakeConector.php';
 
 

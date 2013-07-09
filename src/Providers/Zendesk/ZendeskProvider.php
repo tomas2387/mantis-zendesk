@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/curlWrap.php';
+require_once __DIR__ . '/../curlWrap.php';
 
-class zendeskWrapper
+class ZendeskProvider
 {
     private $curlWrap;
     public function __construct($curlWrap = null)

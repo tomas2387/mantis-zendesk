@@ -1,9 +1,9 @@
 <?php
-require_once __DIR__ . "/../../mantis/Item.php";
-require_once __DIR__ . "/../../mantis/views/migrate.php";
-require_once __DIR__ . "/../../mantis/model/Result.php";
-require_once __DIR__ . "/../../mantis/model/Bug.php";
-require_once __DIR__ . "/../../mantis/model/Reporter.php";
+require_once __DIR__ . "/../../src/Item.php";
+require_once __DIR__ . "/../../src/views/migrate.php";
+require_once __DIR__ . "/../../src/model/Result.php";
+require_once __DIR__ . "/../../src/model/Bug.php";
+require_once __DIR__ . "/../../src/model/Reporter.php";
 
 
 class migrateTest extends PHPUnit_Framework_TestCase

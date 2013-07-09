@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . "/../../mantis/Item.php";
-require_once __DIR__ . "/../../mantis/model/Project.php";
-require_once __DIR__ . "/../../mantis/views/selectProject.php";
+require_once __DIR__ . "/../../src/Item.php";
+require_once __DIR__ . "/../../src/model/Project.php";
+require_once __DIR__ . "/../../src/views/selectProject.php";
 
 
 class selectProjectViewTest extends PHPUnit_Framework_TestCase

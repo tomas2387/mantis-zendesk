@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../mantis/model/Result.php';
+require_once __DIR__ . '/../../src/model/Result.php';
 
 class migrateView extends Item
 {

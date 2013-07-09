@@ -28,15 +28,16 @@ class curlWrap
             case "PUT":
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+                break;
             default:
                 break;
         }
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
         curl_setopt($ch, CURLOPT_USERAGENT, "MozillaXYZ/1.0");
         //FOR DEBUGGING
-        $fh = fopen( __DIR__ . '/../../curl.log', 'w');
-        curl_setopt($ch, CURLOPT_VERBOSE, 1);
-        curl_setopt($ch, CURLOPT_STDERR, $fh);
+        //$fh = fopen( __DIR__ . '/../../curl.log', 'w');
+        //curl_setopt($ch, CURLOPT_VERBOSE, 1);
+        //curl_setopt($ch, CURLOPT_STDERR, $fh);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);

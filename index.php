@@ -1,13 +1,13 @@
 <?php
-require_once __DIR__ . '/mantis/controller/projectController.php';
-require_once __DIR__ . '/mantis/controller/userController.php';
-require_once __DIR__ . '/mantis/controller/bugsController.php';
+require_once __DIR__ . '/src/controller/projectController.php';
+require_once __DIR__ . '/src/controller/userController.php';
+require_once __DIR__ . '/src/controller/bugsController.php';
 
-require_once __DIR__ . '/mantis/views/selectProject.php';
-require_once __DIR__ . '/mantis/views/bugLists.php';
-require_once __DIR__ . '/mantis/views/migrate.php';
-require_once __DIR__ . '/mantis/views/errorView.php';
-require_once __DIR__ . '/mantis/views/generalView.php';
+require_once __DIR__ . '/src/views/selectProject.php';
+require_once __DIR__ . '/src/views/bugLists.php';
+require_once __DIR__ . '/src/views/migrate.php';
+require_once __DIR__ . '/src/views/errorView.php';
+require_once __DIR__ . '/src/views/generalView.php';
 
 
 require_once __DIR__ . '/resources/header.php';

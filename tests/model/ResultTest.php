@@ -4,9 +4,9 @@
  * Date: 25/09/12
  * Time: 10:26
  */
-require_once __DIR__ . '/../../mantis/model/Bug.php';
-require_once __DIR__ . '/../../mantis/model/Result.php';
-require_once __DIR__ . '/../../mantis/model/Reporter.php';
+require_once __DIR__ . '/../../src/model/Bug.php';
+require_once __DIR__ . '/../../src/model/Result.php';
+require_once __DIR__ . '/../../src/model/Reporter.php';
 
 class ResultTest extends PHPUnit_Framework_TestCase
 {

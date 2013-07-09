@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../data/connector.php';
+require_once __DIR__ . '/../Providers/connector.php';
 
 require_once __DIR__ . '/userController.php';
 
@@ -83,7 +83,7 @@ class bugsController
      *  $mantisBug type of array:
      *                  summary => title of the bug
      *                  description => the description
-     *                  reporter => the array with the reporter data
+     *                  reporter => the array with the reporter Providers
      *                          name => the name of the reporter
      *                          email => the email of the reporter
      *                  steps_to_reproduce => more description

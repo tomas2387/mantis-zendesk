@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/mantisWrapper.php';
-require_once __DIR__ . '/zendeskWrapper.php';
+require_once __DIR__ . '/Mantis/MantisProvider.php';
+require_once __DIR__ . '/Zendesk/ZendeskProvider.php';
 
 class connector
 {
@@ -9,8 +9,8 @@ class connector
 
     public function __construct()
     {
-        $this->mw = new mantisWrapper();
-        $this->zw = new zendeskWrapper();
+        $this->mw = new MantisProvider();
+        $this->zw = new ZendeskProvider();
     }
 
     public function getIssues($projectName)

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../data/connector.php';
+require_once __DIR__ . '/../Providers/connector.php';
 require_once __DIR__ . '/../model/Project.php';
 
 class projectController

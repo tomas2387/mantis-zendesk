@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . "/../../mantis/Item.php";
-require_once __DIR__ . "/../../mantis/model/Bug.php";
-require_once __DIR__ . "/../../mantis/model/Reporter.php";
+require_once __DIR__ . "/../../src/Item.php";
+require_once __DIR__ . "/../../src/model/Bug.php";
+require_once __DIR__ . "/../../src/model/Reporter.php";
 
 class BugTest extends PHPUnit_Framework_TestCase
 {
