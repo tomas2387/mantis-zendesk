@@ -3,7 +3,6 @@ Mantis 2 Zendesk
 
 PHP Application to migrate **Mantis bugs to your Zendesk**, as issues.  
 By Tomás Prado, Brahim Lachguer and Mustapha Koumach  
-AGPL-3.0  
 
 Installation for Linux
 -
